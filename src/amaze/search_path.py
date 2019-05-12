@@ -16,7 +16,7 @@ def bfs(filename, level, width, start_pos):
     queue = Queue()
     hashes = set()
 
-    env = Env.from_params(level_rep=level, start_x=start_pos % width, start_y=int(start_pos/width), dim_x=width)
+    env = Env.from_params(level_rep=level, pos=start_pos, dim_x=width)
     queue.append(env)  # push the initial state
     max_coverage = 0
     nodes_cnt = 0
@@ -52,10 +52,10 @@ def bfs(filename, level, width, start_pos):
     return None
 
 
-def dfs(filname, env):
+def dfs(filname, level, width, startpos):
     best_env = None
     for max_reps in reversed(range(1, 20)):
-        solution = dfs_limited(5*60, max_reps, filname, env)
+        solution = dfs_limited(5*60, max_reps, filname, level, width, startpos)
         if solution is None:
             break
         if best_env is None or len(solution.history)<=len(best_env.history):
@@ -63,10 +63,11 @@ def dfs(filname, env):
     return best_env
 
 
-def dfs_limited(max_time, max_reps, filename, env):
+def dfs_limited(max_time, max_reps, filename, level, width, start_pos):
     stack = []
     hashes = set()
 
+    env = Env.from_params(level_rep=level, pos=start_pos, dim_x=width)
     stack.append(env)  # push the initial state
     max_coverage = 0
     nodes_cnt = 0
@@ -84,12 +85,12 @@ def dfs_limited(max_time, max_reps, filename, env):
             if int(time.time() - start_time) > max_time:
                 return
         priorities = []
-        for op in env.possible_ops():
+        for op in env.possible_ops(level, width, env.pos):
             new_env = env.do_step(op)
             new_env.prev_move = op
-            if new_env.no_change > max_reps:
+            if new_env.no_change_count > max_reps:
                 continue
-            new_state_hash = new_env.state_hash_fast()
+            new_state_hash = new_env.state_hash()
             if new_state_hash in hashes:
                 continue
             if new_env.goal_reached():
@@ -97,12 +98,12 @@ def dfs_limited(max_time, max_reps, filename, env):
                 return new_env
             hashes.add(new_state_hash)
             priorities.append(new_env)
-        priorities.sort(key=lambda x: x.no_change)
+        priorities.sort(key=lambda x: x.no_change_count)
         for penv in priorities:
-            if is_opposite_move(penv.prev_move, env.prev_move):
+            if Env.is_opposite_move(penv.prev_move, env.prev_move):
                 stack.append(penv)
         for penv in priorities:
-            if not is_opposite_move(penv.prev_move, env.prev_move):
+            if not Env.is_opposite_move(penv.prev_move, env.prev_move):
                 stack.append(penv)
     clean_status()
 

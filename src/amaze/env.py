@@ -26,9 +26,9 @@ class Env:
         self.no_change_count = 0
 
     @classmethod
-    def from_params(cls, level_rep, start_x, start_y, dim_x):
+    def from_params(cls, level_rep, dim_x, pos):
         env = cls()
-        env.pos = start_y * dim_x + start_x
+        env.pos = pos
         env.history = []
         env.goal = int("".join(level_rep).replace(WALL, '').replace(EMPTY, COLORED), 2)
         env.nodes = {}
@@ -41,8 +41,8 @@ class Env:
 
     @classmethod
     def make_copy(cls, env):
-        new_env = cls()
-        new_env.history = [*env.history]
+        new_env = Env()
+        new_env.history = env.history[:]
         new_env.state = env.state
         new_env.prev_move = env.prev_move
         new_env.no_change_count = env.no_change_count

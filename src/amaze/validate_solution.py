@@ -2,8 +2,8 @@ from load_level import env_from_file
 from env import Env
 
 
-def validate_solution(solution, level, start_x, start_y, dim_x):
-    env = Env.from_params(level, start_x, start_y, dim_x)
+def validate_solution(solution, level, dimx, pos):
+    env = Env.from_params(level, dimx, pos)
     for op in solution:
         if env.goal_reached():
             return False

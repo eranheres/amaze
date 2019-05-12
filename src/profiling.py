@@ -5,6 +5,5 @@ from amaze.search_path import bfs, dfs
 import re
 
 os.chdir("../../data/test")
-env = env_from_file("058.xml")
-if env is not None:
-    cProfile.run('re.compile(dfs("058.xml",env))')
+level, start_pos, width, height = env_from_file("057.xml")
+cProfile.run('re.compile(bfs("057.xml",level,width,start_pos))')

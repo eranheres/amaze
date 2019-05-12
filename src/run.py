@@ -29,7 +29,7 @@ for file in sorted(glob.glob("*.xml")):
     #solution = None
     end_time = time.time()
     if solution:
-        if validate_solution(solution.history, level, int(start_pos%width), int(start_pos/width), width):
+        if validate_solution(solution.history, level, width, start_pos):
             print(algo,display_file,",", int(end_time-start_time),",",len(solution.history),",", [x for x in solution.history])
         else:
             print("!! Invalid solution ",file,",", int(end_time-start_time),",", [x for x in solution.history])
