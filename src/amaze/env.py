@@ -73,6 +73,7 @@ class Env:
                     break
             if pos == start_pos:
                 break
+            break # remove this break to return tunneling
             possible_ops = Env.possible_ops(lvl, dims_x, pos)
             if len(possible_ops) == 2:
                 if Env.is_opposite_move(possible_ops[0], op):
@@ -145,3 +146,41 @@ class Env:
 
     def coverage(self):
         return float(bin(self.state)[2:].count('1'))/self.state_len
+
+    @staticmethod
+    def get_printable_solution(level_rep, dim_x, start_pos, solution):
+        ret = []
+        lvl = [*level_rep]
+        lvl[start_pos] = 1
+        pos = start_pos
+        for op in solution:
+            while True:
+                ret.append(op)
+                delta = {
+                    LEFT: -1,
+                    RIGHT: +1,
+                    UP: -dim_x,
+                    DOWN: +dim_x
+                }[op]
+                while True:
+                    lvl[pos] = COLORED
+                    pos += delta
+                    if (lvl[pos] == WALL) or (pos < 0) or (pos >= len(lvl)):
+                        pos -= delta
+                        break
+                break # remove this to return tunneling
+                if pos == start_pos:
+                    break
+                possible_ops = Env.possible_ops(lvl, dim_x, pos)
+                if len(possible_ops) == 2:
+                    if Env.is_opposite_move(possible_ops[0], op):
+                        op = possible_ops[1]
+                    else:
+                        op = possible_ops[0]
+                else:
+                    break
+        if lvl.count(EMPTY) > 0:
+            print("Solution not valid")
+            return "Solution not valid"
+
+        return ",".join(ret).replace(RIGHT,'1').replace(LEFT,'2').replace(UP,'3').replace(DOWN,'4')
