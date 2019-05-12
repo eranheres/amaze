@@ -1,2 +1,4 @@
 .git/
 .idea/
+amaze/__pycache__/
+src/amaze/__pycache__/

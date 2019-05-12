@@ -32,9 +32,15 @@ def bfs(filename, env):
             nodes_cnt = 0
             #if (int(time.time() - start_time) > 100):
             #    return None
-        for op in env.possible_ops():
+        possible_moves = env.possible_ops()
+        possible_moves_len = len(possible_moves)
+        for op in possible_moves:
+            if possible_moves_len == 2 and is_opposite_move(op, env.prev_move):
+                continue
             new_env = env.do_step(op)
+            new_env.prev_move = op
             new_state_hash = new_env.state_hash()
+
             if new_state_hash in hashes:
                 continue
             if new_env.goal_reached():

@@ -6,12 +6,11 @@ import time
 import argparse
 
 parser = argparse.ArgumentParser(description='Process some integers.')
-parser.add_argument('--path',
-                    default='../data/all',
-                    dest='path',
-                    help='path to data')
+parser.add_argument('--path', default='../data/all', dest='path', help='path to data')
+parser.add_argument('--max_nodes', default=47, dest='max_nodes', help='path to data')
 args = parser.parse_args()
 print("parsing:", args.path)
+max_nodes = int(args.max_nodes)
 os.chdir(args.path)
 for file in sorted(glob.glob("*.xml")):
     env = env_from_file(file)
@@ -21,7 +20,7 @@ for file in sorted(glob.glob("*.xml")):
     start_time = time.time()
     nodes = count_nodes(env)
     display_file = file+"("+str(nodes)+")"
-    if nodes<48:
+    if nodes<max_nodes:
         solution = bfs(display_file, env)
         algo = "!!"
     else:
