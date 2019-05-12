@@ -32,3 +32,12 @@ class Queue:
             self.tail = 0
         self.items = self.items-1
         return x
+
+    def push(self, item):
+        if self.len-1 == self.items:
+            self.increase_queue()
+        self.v[self.tail] = item
+        self.tail -= 1
+        if self.tail < 0:
+            self.tail = self.len - 1
+        self.items = self.items+1

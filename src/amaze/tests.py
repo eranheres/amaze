@@ -2,7 +2,7 @@ import unittest
 from env import Env, EMPTY, COLORED, WALL, UP, DOWN, LEFT, RIGHT
 from myqueue import Queue
 from load_level import env_from_file
-from search_path import get_island_length
+from search_path import get_island_length, count_nodes
 
 class TestEnvMethods(unittest.TestCase):
 
@@ -178,6 +178,7 @@ class TestIslands(unittest.TestCase):
         env = Env(list(level), 1, 1, 7, 7)
         self.assertEqual(1, get_island_length(env, DOWN))
         self.assertEqual(4, get_island_length(env, RIGHT))
+        self.assertEqual(2, count_nodes(env))
 
     def test_islands2(self):
         level = \
@@ -191,6 +192,7 @@ class TestIslands(unittest.TestCase):
         env = Env(list(level), 1, 1, 7, 7)
         self.assertEqual(3, get_island_length(env, RIGHT))
         self.assertEqual(4, get_island_length(env, DOWN))
+        self.assertEqual(4, count_nodes(env))
 
     def test_islands3(self):
         level = \

@@ -25,7 +25,7 @@ class Env:
         self.level_rep = [*level_rep]
         self.level_rep[self.pos] = COLORED
         self.no_change = 0
-        self.prev_move = RIGHT
+        self.prev_move = 'N'
 
     def goal_reached(self):
         return EMPTY not in self.level_rep
@@ -82,8 +82,8 @@ class Env:
         return ops
 
     def state_hash(self):
-        #return int(bin(self.pos)[2:] + "".join(self.level_rep).replace('2', ''), 2)
-        return bin(self.pos)[2:] + "".join(self.level_rep)
+        return int(bin(self.pos)[2:] + "".join(self.level_rep).replace('2', ''), 2)
+        #return bin(self.pos)[2:] + "".join(self.level_rep)
 
     def coverage(self):
         zeros = self.level_rep.count(EMPTY)

@@ -112,8 +112,12 @@ def count_nodes(env):
     hash = set()
     stack.append(env)
     hash.add(env.pos)
+    count_tunnels = 0
     while not len(stack) == 0:
         env = stack.pop()
+        possible_ops = env.possible_ops()
+        if len(possible_ops) == 2:
+            count_tunnels += 1
         for op in env.possible_ops():
             new_env = env.do_step(op)
             new_pos = new_env.pos
@@ -121,7 +125,7 @@ def count_nodes(env):
                 continue
             stack.append(new_env)
             hash.add(new_env.pos)
-    return len(hash)
+    return len(hash) - count_tunnels
 
 
 def is_opposite_move(op1, op2):
