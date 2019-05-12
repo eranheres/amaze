@@ -81,9 +81,11 @@ class Env:
         #random.shuffle(ops)
         return ops
 
-    def state_hash(self):
+    def state_hash_slow(self):
         return int(bin(self.pos)[2:] + "".join(self.level_rep).replace('2', ''), 2)
-        #return bin(self.pos)[2:] + "".join(self.level_rep)
+
+    def state_hash_fast(self):
+        return bin(self.pos)[2:] + "".join(self.level_rep)
 
     def coverage(self):
         zeros = self.level_rep.count(EMPTY)

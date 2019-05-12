@@ -39,7 +39,7 @@ def bfs(filename, env):
                 continue
             new_env = env.do_step(op)
             new_env.prev_move = op
-            new_state_hash = new_env.state_hash()
+            new_state_hash = new_env.state_hash_slow()
 
             if new_state_hash in hashes:
                 continue
@@ -89,7 +89,7 @@ def dfs_limited(max_time, max_reps, filename, env):
             new_env.prev_move = op
             if new_env.no_change > max_reps:
                 continue
-            new_state_hash = new_env.state_hash()
+            new_state_hash = new_env.state_hash_fast()
             if new_state_hash in hashes:
                 continue
             if new_env.goal_reached():
