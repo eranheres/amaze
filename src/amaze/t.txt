@@ -1,0 +1,69 @@
+  Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.895    0.895  102.208  102.208 <string>:1(<module>)
+  2378872    7.465    0.000   10.935    0.000 env.py:17(__init__)
+  1470473    0.759    0.000    0.759    0.000 env.py:27(goal_reached)
+  2378872   10.609    0.000   23.110    0.000 env.py:33(do_step)
+   976996    2.145    0.000    2.377    0.000 env.py:58(possible_ops)
+  2378872    2.158    0.000    5.265    0.000 env.py:70(state_hash)
+      106    0.000    0.000    0.001    0.000 env.py:74(coverage)
+        1    0.000    0.000    0.000    0.000 re.py:232(compile)
+        1    0.000    0.000    0.000    0.000 re.py:271(_compile)
+      100    0.001    0.000    0.003    0.000 search_path.py:4(print_status)
+        1    6.103    6.103  101.313  101.313 search_path.py:9(bfs)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:595(isstring)
+  2378872    0.515    0.000    0.515    0.000 {built-in method builtins.bin}
+        1    0.000    0.000  102.208  102.208 {built-in method builtins.exec}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+  3356169    0.324    0.000    0.324    0.000 {built-in method builtins.len}
+      100    0.002    0.000    0.002    0.000 {built-in method builtins.print}
+   977299    0.220    0.000    0.220    0.000 {built-in method time.time}
+  3849345    0.533    0.000    0.533    0.000 {method 'add' of 'set' objects}
+  3849346    0.811    0.000    0.811    0.000 {method 'append' of 'list' objects}
+  4757744    4.179    0.000    4.179    0.000 {method 'copy' of 'list' objects}
+      212    0.000    0.000    0.000    0.000 {method 'count' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+  2378872    2.592    0.000    2.592    0.000 {method 'join' of 'str' objects}
+   976997   62.897    0.000   62.897    0.000 {method 'pop' of 'list' objects}
+
+
+
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+Traceback (most recent call last):
+  File "/Users/eranh/Project/amaze_list/src/profiling.py", line 9, in <module>
+    cProfile.run('re.compile(bfs(env))')
+  File "/usr/local/Cellar/python/3.7.2_2/Frameworks/Python.framework/Versions/3.7/lib/python3.7/cProfile.py", line 16, in run
+    return _pyprofile._Utils(Profile).run(statement, filename, sort)
+        1    2.832    2.832  103.974  103.974 <string>:1(<module>)
+  6980894   11.419    0.000   23.638    0.000 env.py:17(__init__)
+  3972480    1.988    0.000    1.988    0.000 env.py:27(goal_reached)
+  6980894   22.401    0.000   53.410    0.000 env.py:33(do_step)
+  2875636    6.295    0.000    6.899    0.000 env.py:58(possible_ops)
+  6980894    5.879    0.000   14.605    0.000 env.py:70(state_hash)
+      107    0.000    0.000    0.001    0.000 env.py:74(coverage)
+  2875637    0.524    0.000    0.524    0.000 myqueue.py:10(empty)
+       20    0.065    0.003    0.065    0.003 myqueue.py:13(increase_queue)
+  3972481    5.639    0.000    5.703    0.000 myqueue.py:19(append)
+  2875637    1.856    0.000    1.856    0.000 myqueue.py:28(pop)
+        1    0.000    0.000    0.000    0.000 myqueue.py:3(__init__)
+        1    0.000    0.000    0.000    0.000 re.py:232(compile)
+        1    0.000    0.000    0.000    0.000 re.py:271(_compile)
+       97    0.001    0.000    0.002    0.000 search_path.py:4(print_status)
+        1   14.904   14.904  101.142  101.142 search_path.py:9(bfs)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:595(isstring)
+  6980894    1.286    0.000    1.286    0.000 {built-in method builtins.bin}
+        1    0.000    0.000  103.974  103.974 {built-in method builtins.exec}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+  6981088    0.731    0.000    0.731    0.000 {built-in method builtins.len}
+       97    0.002    0.000    0.002    0.000 {built-in method builtins.print}
+  2875930    0.554    0.000    0.554    0.000 {built-in method time.time}
+ 10953374    1.300    0.000    1.300    0.000 {method 'add' of 'set' objects}
+  File "/usr/local/Cellar/python/3.7.2_2/Frameworks/Python.framework/Versions/3.7/lib/python3.7/profile.py", line 53, in run
+  6980894    1.746    0.000    1.746    0.000 {method 'append' of 'list' objects}
+ 13961788   17.112    0.000   17.112    0.000 {method 'copy' of 'list' objects}
+      214    0.000    0.000    0.000    0.000 {method 'count' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+  6980894    7.440    0.000    7.440    0.000 {method 'join' of 'str' objects}
+
