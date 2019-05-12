@@ -12,10 +12,11 @@ def clean_status():
     print("\r", end='')
 
 
-def bfs(filename, env):
+def bfs(filename, level, width, start_pos):
     queue = Queue()
     hashes = set()
 
+    env = Env.from_params(level_rep=level, start_x=start_pos % width, start_y=int(start_pos/width), dim_x=width)
     queue.append(env)  # push the initial state
     max_coverage = 0
     nodes_cnt = 0
@@ -32,15 +33,14 @@ def bfs(filename, env):
             nodes_cnt = 0
             #if (int(time.time() - start_time) > 100):
             #    return None
-        possible_moves = env.possible_ops()
+        possible_moves = env.nodes[env.pos]
         possible_moves_len = len(possible_moves)
         for op in possible_moves:
-            if possible_moves_len == 2 and is_opposite_move(op, env.prev_move):
+            if possible_moves_len == 2 and Env.is_opposite_move(op, env.prev_move):
                 continue
             new_env = env.do_step(op)
             new_env.prev_move = op
-            new_state_hash = new_env.state_hash_slow()
-
+            new_state_hash = new_env.state_hash()
             if new_state_hash in hashes:
                 continue
             if new_env.goal_reached():
@@ -107,36 +107,23 @@ def dfs_limited(max_time, max_reps, filename, env):
     clean_status()
 
 
-def count_nodes(env):
+def count_nodes(level, width, start_pos):
     stack = []
     hash = set()
-    stack.append(env)
-    hash.add(env.pos)
-    count_tunnels = 0
+    stack.append(start_pos)
+    hash.add(start_pos)
     while not len(stack) == 0:
-        env = stack.pop()
-        possible_ops = env.possible_ops()
-        if len(possible_ops) == 2:
-            count_tunnels += 1
-        for op in env.possible_ops():
-            new_env = env.do_step(op)
-            new_pos = new_env.pos
+        pos = stack.pop()
+        possible_ops = Env.possible_ops(level, width, pos)
+        for op in possible_ops:
+            new_pos, x = Env.prepare_nodes_do_step(level, width, pos, op)
             if new_pos in hash:
                 continue
-            stack.append(new_env)
-            hash.add(new_env.pos)
-    return len(hash) - count_tunnels
+            stack.append(new_pos)
+            hash.add(new_pos)
+    return len(hash)
 
 
-def is_opposite_move(op1, op2):
-    if op1 == UP:
-        return op2 == DOWN
-    if op1 == DOWN:
-        return op2 == UP
-    if op1 == LEFT:
-        return op2 == RIGHT
-    if op1 == RIGHT:
-        return op2 == LEFT
 
 
 def get_island_length(env, op):

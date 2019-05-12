@@ -12,11 +12,8 @@ class TestEnvMethods(unittest.TestCase):
             '20010022222' \
             '22200000222' \
             '22222222222'
-        env = Env(list(level), 3, 1, 11, 4)
-        expected = env.level_rep
-        self.assertEqual(list(level), expected)
-        self.assertEqual(env.pos_x, 3)
-        self.assertEqual(env.pos_y, 1)
+        env = Env.from_params(list(level), 3, 1, 11, 4)
+        self.assertEqual(env.pos, 1*11+3)
 
     def test_isupper(self):
         self.assertTrue('FOO'.isupper())
@@ -35,12 +32,9 @@ class TestEnvMethods(unittest.TestCase):
             '20000022222' \
             '22200000222' \
             '22222222222'
-        env = Env(list(level), 3, 1, 11, 4)
-        self.assertEqual([LEFT, RIGHT, DOWN], env.possible_ops())
-        env = Env(list(level), 2, 2, 11, 4)
-        self.assertEqual([RIGHT, UP], env.possible_ops())
-        env = Env(list(level), 7, 2, 11, 4)
-        self.assertEqual([LEFT], env.possible_ops())
+        self.assertEqual([LEFT, RIGHT, DOWN], Env.possible_ops(list(level), 11, 1*11+3))
+        self.assertEqual([RIGHT, UP], Env.possible_ops(list(level), 11, 2*11+2))
+        self.assertEqual([LEFT], Env.possible_ops(list(level), 11, 2*11+7))
 
     def test_goal_reached(self):
         level = \
@@ -49,7 +43,7 @@ class TestEnvMethods(unittest.TestCase):
             '22200000202' \
             '22200000222' \
             '22222222222'
-        env = Env(list(level), 3, 1, 11, 4)
+        env = Env.from_params(list(level), 3, 1, 11, 4)
         self.assertFalse(env.goal_reached())
 
         level = \
@@ -58,7 +52,7 @@ class TestEnvMethods(unittest.TestCase):
             '22211111212' \
             '22211111222' \
             '22222222222'
-        env = Env(list(level), 3, 1, 11, 4)
+        env = Env.from_params(list(level), 3, 1, 11, 4)
         self.assertTrue(env.goal_reached())
 
     def test_hash(self):
@@ -68,7 +62,7 @@ class TestEnvMethods(unittest.TestCase):
             '22210000202' \
             '22200010222' \
             '22222222222'
-        env = Env(list(level), start_x=3, start_y=2, dimx=11, dimy=4)
+        env = Env.from_params(list(level), start_x=3, start_y=2, dim_x=11, dim_y=4)
         s = bin(2*11 + 3)[2:] + '0010010000000010'
         # '110010010000000000010'
         # '110010010010000000010'
@@ -83,29 +77,31 @@ class TestEnvMethods(unittest.TestCase):
             '22200000222' \
             '22222222222'
 
-        env = Env(list(level), 3, 1, 11, 4)
+        env = Env.from_params(list(level), 3, 1, 11, 4)
         expected = \
             '22222222222' \
             '20011122222' \
-            '22200000202' \
-            '22200000222' \
+            '22200100202' \
+            '22200100222' \
             '22222222222'
+        expected = Env.from_params(list(expected), 5, 3, 11, 4)
         new_env = env.do_step(RIGHT)
-        self.assertEqual(list(expected), new_env.level_rep)
-        self.assertEqual(5, new_env.pos_x)
-        self.assertEqual(1, new_env.pos_y)
+        print(bin(expected.state_hash()))
+        print(bin(new_env.state_hash()))
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(3*11+5, new_env.pos)
 
-        env = Env(list(level), 3, 1, 11, 4)
+        env = Env.from_params(list(level), 3, 1, 11, 4)
         expected = \
             '22222222222' \
             '20010022222' \
-            '22210000202' \
-            '22210000222' \
+            '22211111202' \
+            '22211111222' \
             '22222222222'
+        expected = Env.from_params(list(expected), 3, 2, 11, 4)
         new_env = env.do_step(DOWN)
-        self.assertEqual(list(expected), new_env.level_rep)
-        self.assertEqual(3, new_env.pos_x)
-        self.assertEqual(3, new_env.pos_y)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(2*11+3, new_env.pos)
 
         level = \
             '22222222222' \
@@ -114,30 +110,48 @@ class TestEnvMethods(unittest.TestCase):
             '22200100222' \
             '22222222222'
 
-        env = Env(list(level), 5, 3, 11, 4)
+        env = Env.from_params(list(level), 5, 3, 11, 4)
         expected = \
             '22222222222' \
-            '20000022222' \
-            '22200000202' \
+            '20010022222' \
+            '22210000202' \
             '22211100222' \
             '22222222222'
+        expected = Env.from_params(list(expected), 3, 1, 11, 4)
         new_env = env.do_step(LEFT)
-        self.assertEqual(list(expected), new_env.level_rep)
-        self.assertEqual(3, new_env.pos_x)
-        self.assertEqual(3, new_env.pos_y)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(1*11+3, new_env.pos)
 
-        env = Env(list(level), 5, 3, 11, 4)
+        env = Env.from_params(list(level), 5, 3, 11, 4)
         expected = \
             '22222222222' \
-            '20000122222' \
+            '21111122222' \
             '22200100202' \
             '22200100222' \
             '22222222222'
+        expected = Env.from_params(list(expected), 1, 1, 11, 4)
         new_env = env.do_step(UP)
-        self.assertEqual(list(expected), new_env.level_rep)
-        self.assertEqual(5, new_env.pos_x)
-        self.assertEqual(1, new_env.pos_y)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(1*11+1, new_env.pos)
 
+        level = \
+            '22222222222' \
+            '20000000002' \
+            '20222222202' \
+            '20000000002' \
+            '22222222222'
+
+        env = Env.from_params(list(level), 1, 1, 11, 4)
+        expected = \
+            '22222222222' \
+            '21111111112' \
+            '21222222212' \
+            '21111111112' \
+            '22222222222'
+        expected = Env.from_params(list(expected), 1, 1, 11, 4)
+        new_env = env.do_step(RIGHT)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(1*11+1, new_env.pos)
 
 class TestQueue(unittest.TestCase):
     def test_pop(self):
@@ -175,10 +189,10 @@ class TestIslands(unittest.TestCase):
             '0,1,0,1,0,1,0,' \
             '0,1,0,1,1,1,0,' \
             '0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
-        env = Env(list(level), 1, 1, 7, 7)
-        self.assertEqual(1, get_island_length(env, DOWN))
-        self.assertEqual(4, get_island_length(env, RIGHT))
-        self.assertEqual(2, count_nodes(env))
+        env = Env.from_params(list(level), 1, 1, 7, 7)
+#        self.assertEqual(1, get_island_length(env, DOWN))
+#        self.assertEqual(4, get_island_length(env, RIGHT))
+        self.assertEqual(3, count_nodes(list(level), 7, 1*7+1))
 
     def test_islands2(self):
         level = \
@@ -189,10 +203,9 @@ class TestIslands(unittest.TestCase):
             '0,0,0,1,0,1,0,' \
             '0,1,1,1,0,1,0,' \
             '0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
-        env = Env(list(level), 1, 1, 7, 7)
-        self.assertEqual(3, get_island_length(env, RIGHT))
-        self.assertEqual(4, get_island_length(env, DOWN))
-        self.assertEqual(4, count_nodes(env))
+#        self.assertEqual(3, get_island_length(env, RIGHT))
+#        self.assertEqual(4, get_island_length(env, DOWN))
+        self.assertEqual(5, count_nodes(list(level), 7, 1*7+1))
 
     def test_islands3(self):
         level = \
@@ -204,11 +217,11 @@ class TestIslands(unittest.TestCase):
             '0,0,0,0,0,0,0,1,0,' \
             '0,1,1,1,1,1,1,1,0,' \
             '0,0,0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
-        env = Env(list(level), 1, 1, 9, 8)
-        self.assertEqual(13, get_island_length(env, RIGHT))
-        env = Env(list(level), 3, 1, 9, 8)
-        self.assertEqual(1, get_island_length(env, LEFT))
-        self.assertEqual(12, get_island_length(env, DOWN))
+        #env = Env.from_params(list(level), 1, 1, 9, 8)
+        #self.assertEqual(13, get_island_length(env, RIGHT))
+        #env = Env.from_params(list(level), 3, 1, 9, 8)
+        #self.assertEqual(1, get_island_length(env, LEFT))
+        #self.assertEqual(12, get_island_length(env, DOWN))
 
     def test_islands4(self):
         level = \
@@ -220,9 +233,9 @@ class TestIslands(unittest.TestCase):
             '0,0,0,0,0,0,0,0,0,' \
             '0,0,0,0,0,0,0,0,0,' \
             '0,0,0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
-        env = Env(list(level), 1, 1, 9, 8)
-        self.assertEqual(-1, get_island_length(env, RIGHT))
-        self.assertEqual(4, get_island_length(env, DOWN))
+        env = Env.from_params(list(level), 1, 1, 9, 8)
+#        self.assertEqual(-1, get_island_length(env, RIGHT))
+#        self.assertEqual(4, get_island_length(env, DOWN))
 
 if __name__ == '__main__':
     unittest.main()

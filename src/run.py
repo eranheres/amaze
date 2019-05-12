@@ -13,23 +13,23 @@ print("parsing:", args.path)
 max_nodes = int(args.max_nodes)
 os.chdir(args.path)
 for file in sorted(glob.glob("*.xml")):
-    env = env_from_file(file)
-    if env is None:
+    level, start_pos, width, height = env_from_file(file)
+    if level is None:
         print("Invalid file format")
         continue
     start_time = time.time()
-    nodes = count_nodes(env)
+    nodes = count_nodes(level, width, start_pos)
     display_file = file+"("+str(nodes)+")"
     if nodes<max_nodes:
-        solution = bfs(display_file, env)
+        solution = bfs(display_file, level, width, start_pos)
         algo = "!!"
     else:
-        solution = dfs(display_file, env)
+        solution = dfs(display_file, level, width, start_pos)
         algo = "??"
     #solution = None
     end_time = time.time()
     if solution:
-        if validate_solution(file, env, solution.history):
+        if validate_solution(solution.history, level, int(start_pos%width), int(start_pos/width), width):
             print(algo,display_file,",", int(end_time-start_time),",",len(solution.history),",", [x for x in solution.history])
         else:
             print("!! Invalid solution ",file,",", int(end_time-start_time),",", [x for x in solution.history])

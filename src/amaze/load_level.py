@@ -14,4 +14,4 @@ def env_from_file(filename):
 
     start_pos = level.find('0')
     #start_pos = 12*10+2
-    return Env(list(level), start_pos % width, int(start_pos / width), width, height)
+    return list(level), start_pos, width, height
