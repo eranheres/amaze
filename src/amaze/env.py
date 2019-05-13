@@ -59,6 +59,7 @@ class Env:
     def prepare_nodes_do_step(level_rep, dims_x, start_pos, op, tunneling):
         lvl = [*level_rep]
         pos = start_pos
+        cost = 0
         while True:
             delta = {
                 LEFT: -1,
@@ -66,6 +67,7 @@ class Env:
                 UP: -dims_x,
                 DOWN: +dims_x
             }[op]
+            cost += 1
             while True:
                 lvl[pos] = COLORED
                 pos += delta
@@ -87,7 +89,7 @@ class Env:
             else:
                 break
         bitwise = int("".join(lvl).replace(WALL, ''), 2)
-        return pos, bitwise
+        return pos, bitwise, cost
 
     @staticmethod
     def is_opposite_move(op1, op2):
@@ -106,10 +108,10 @@ class Env:
             pos = stack.pop()
             possible_ops = self.possible_ops(level_rep, dims_x, pos)
             for op in possible_ops:
-                new_pos, val = self.prepare_nodes_do_step(level_rep, dims_x, pos, op, self.tunneling)
+                new_pos, val, cost = self.prepare_nodes_do_step(level_rep, dims_x, pos, op, self.tunneling)
                 if pos not in self.nodes:
                     self.nodes[pos] = {}
-                self.nodes[pos][op] = (new_pos, val)
+                self.nodes[pos][op] = (new_pos, val, cost)
                 if new_pos in self.nodes:
                     continue
                 stack.append(new_pos)
@@ -119,14 +121,14 @@ class Env:
 
     def do_step(self, op):
         new_env = Env.make_copy(self)
-        new_pos, val = self.nodes[self.pos][op]
+        new_pos, val, cost = self.nodes[self.pos][op]
         new_env.state = self.state | val
         new_env.pos = new_pos
         new_env.history.append(op)
         if new_env.state > self.state:
             new_env.no_change_count = 0
         else:
-            new_env.no_change_count += 1
+            new_env.no_change_count += cost
         return new_env
 
     @staticmethod

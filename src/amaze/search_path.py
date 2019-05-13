@@ -117,7 +117,7 @@ def count_nodes(level, width, start_pos):
         pos = stack.pop()
         possible_ops = Env.possible_ops(level, width, pos)
         for op in possible_ops:
-            new_pos, x = Env.prepare_nodes_do_step(level, width, pos, op, True)
+            new_pos, x, cost = Env.prepare_nodes_do_step(level, width, pos, op, True)
             if new_pos in hash:
                 continue
             stack.append(new_pos)

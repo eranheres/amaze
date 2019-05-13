@@ -12,8 +12,10 @@ class TestEnvMethods(unittest.TestCase):
             '20010022222' \
             '22200000222' \
             '22222222222'
-        env = Env.from_params(list(level), 11, 3*11+1)
-        self.assertEqual(env.pos, 3*11+1)
+        env = Env.from_params(list(level), 11, 3+11*1, tunneling=True)
+        self.assertEqual(env.pos, 3+11*1)
+        self.assertEqual(env.nodes[1+1*11][RIGHT][0],2*11+5)
+        self.assertEqual(env.nodes[1+1*11][RIGHT][2],2)
 
     def test_isupper(self):
         self.assertTrue('FOO'.isupper())
@@ -69,7 +71,7 @@ class TestEnvMethods(unittest.TestCase):
         expected = int(s, 2)
         self.assertEqual(expected, env.state_hash())
 
-    def test_do_step(self):
+    def test_do_step_tunneling(self):
         level = \
             '22222222222' \
             '20010022222' \
@@ -77,31 +79,32 @@ class TestEnvMethods(unittest.TestCase):
             '22200000222' \
             '22222222222'
 
-        env = Env.from_params(list(level), 11, 3+1*11)
+        env = Env.from_params(list(level), 11, 3+1*11, tunneling=False)
         expected = \
             '22222222222' \
             '20011122222' \
-            '22200100202' \
-            '22200100222' \
+            '22200000202' \
+            '22200000222' \
             '22222222222'
-        expected = Env.from_params(list(expected), 11, 5+3*11)
+        expected = Env.from_params(list(expected), 11, 5+1*11)
         new_env = env.do_step(RIGHT)
-        print(bin(expected.state_hash()))
-        print(bin(new_env.state_hash()))
         self.assertEqual(expected.state_hash(), new_env.state_hash())
-        self.assertEqual(3*11+5, new_env.pos)
+        self.assertEqual(5+1*11, new_env.pos)
+        self.assertEqual(env.nodes[3+1*11][RIGHT][2],1)
 
         env = Env.from_params(list(level), 11, 3+1*11)
         expected = \
             '22222222222' \
             '20010022222' \
-            '22211111202' \
-            '22211111222' \
+            '22210000202' \
+            '22210000222' \
             '22222222222'
-        expected = Env.from_params(list(expected), 11, 2*11+3)
+        expected = Env.from_params(list(expected), 11, 3*11+3, tunneling=False)
         new_env = env.do_step(DOWN)
         self.assertEqual(expected.state_hash(), new_env.state_hash())
-        self.assertEqual(2*11+3, new_env.pos)
+        self.assertEqual(3*11+3, new_env.pos)
+        self.assertEqual(env.nodes[3+3*11][RIGHT][2],1)
+
 
         level = \
             '22222222222' \
@@ -113,6 +116,93 @@ class TestEnvMethods(unittest.TestCase):
         env = Env.from_params(list(level), 11, 5+3*11)
         expected = \
             '22222222222' \
+            '20000022222' \
+            '22200000202' \
+            '22211100222' \
+            '22222222222'
+        expected = Env.from_params(list(expected), 11, 3+3*11)
+        new_env = env.do_step(LEFT)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(3*11+3, new_env.pos)
+
+        env = Env.from_params(list(level), 11, 5+3*11, tunneling=False)
+        expected = \
+            '22222222222' \
+            '20000122222' \
+            '22200100202' \
+            '22200100222' \
+            '22222222222'
+        expected = Env.from_params(list(expected), 11, 1*11+5)
+        new_env = env.do_step(UP)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(1*11+5, new_env.pos)
+
+        level = \
+            '22222222222' \
+            '20000000002' \
+            '20222222202' \
+            '20000000002' \
+            '22222222222'
+
+        env = Env.from_params(list(level), 11, 1*11+1)
+        expected = \
+            '22222222222' \
+            '21111111112' \
+            '20222222202' \
+            '20000000002' \
+            '22222222222'
+        expected = Env.from_params(list(expected), 11, 1*11+9)
+        new_env = env.do_step(RIGHT)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(1*11+9, new_env.pos)
+        self.assertEqual(env.nodes[1+1*11][RIGHT][2],1)
+
+    def test_do_step_no_tunneling(self):
+        level = \
+            '22222222222' \
+            '20010022222' \
+            '22200000202' \
+            '22200000222' \
+            '22222222222'
+
+        env = Env.from_params(list(level), 11, 3+1*11, tunneling=True)
+        expected = \
+            '22222222222' \
+            '20011122222' \
+            '22200100202' \
+            '22200100222' \
+            '22222222222'
+        expected = Env.from_params(list(expected), 11, 5+3*11)
+        new_env = env.do_step(RIGHT)
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(3*11+5, new_env.pos)
+        self.assertEqual(env.nodes[3+1*11][RIGHT][2],2)
+
+        env = Env.from_params(list(level), 11, 1*11+3, tunneling=True)
+        expected = \
+            '22222222222' \
+            '20010022222' \
+            '22211111202' \
+            '22211111222' \
+            '22222222222'
+        expected = Env.from_params(list(expected), 11, 3+2*11, tunneling=True)
+        new_env = env.do_step(DOWN)
+        #print(bin(expected.state_hash()))
+        #print(bin(new_env.state_hash()))
+        self.assertEqual(expected.state_hash(), new_env.state_hash())
+        self.assertEqual(2*11+3, new_env.pos)
+        self.assertEqual(env.nodes[3+2*11][RIGHT][2],4)
+
+        level = \
+            '22222222222' \
+            '20000022222' \
+            '22200000202' \
+            '22200100222' \
+            '22222222222'
+
+        env = Env.from_params(list(level), 11, 5+3*11, tunneling=True)
+        expected = \
+            '22222222222' \
             '20010022222' \
             '22210000202' \
             '22211100222' \
@@ -121,8 +211,9 @@ class TestEnvMethods(unittest.TestCase):
         new_env = env.do_step(LEFT)
         self.assertEqual(expected.state_hash(), new_env.state_hash())
         self.assertEqual(1*11+3, new_env.pos)
+        self.assertEqual(env.nodes[5+3*11][LEFT][2],2)
 
-        env = Env.from_params(list(level), 11, 5+3*11)
+        env = Env.from_params(list(level), 11, 5+3*11, tunneling=True)
         expected = \
             '22222222222' \
             '21111122222' \
@@ -141,7 +232,7 @@ class TestEnvMethods(unittest.TestCase):
             '20000000002' \
             '22222222222'
 
-        env = Env.from_params(list(level), 11, 1*11+1)
+        env = Env.from_params(list(level), 11, 1*11+1, tunneling=True)
         expected = \
             '22222222222' \
             '21111111112' \
@@ -152,6 +243,7 @@ class TestEnvMethods(unittest.TestCase):
         new_env = env.do_step(RIGHT)
         self.assertEqual(expected.state_hash(), new_env.state_hash())
         self.assertEqual(1*11+1, new_env.pos)
+        self.assertEqual(env.nodes[1+1*11][RIGHT][2],4)
 
 
 class TestQueue(unittest.TestCase):
