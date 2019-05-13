@@ -54,7 +54,7 @@ def bfs(filename, level, width, start_pos):
 
 def dfs(filname, level, width, startpos):
     best_env = None
-    for max_reps in reversed(range(0, 20)):
+    for max_reps in reversed(range(0, 3)):
         solution = dfs_limited(5*60, max_reps, filname, level, width, startpos)
         if solution is None:
             break
