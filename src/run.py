@@ -24,17 +24,19 @@ for file in sorted(glob.glob("*.xml")):
     display_file = file+"("+str(nodes)+")"
     if nodes<max_nodes:
         solution = bfs(display_file, level, width, start_pos)
+        tun = False
         algo = "!!"
     else:
         solution = dfs(display_file, level, width, start_pos)
+        tun = True
         algo = "??"
     #solution = None
     end_time = time.time()
     if solution:
-        if validate_solution(solution.history, level, width, start_pos):
+        if validate_solution(solution.history, level, width, start_pos, tun):
             run_time = int(end_time - start_time)
             print(algo,display_file,",", run_time,",",len(solution.history),",", [x for x in solution.history])
-            tot += file+","+str(run_time)+","+Env.get_printable_solution(level, width, start_pos, solution.history)+"\n"
+            tot += file+","+str(run_time)+","+Env.get_printable_solution(level, width, start_pos, solution.history, tun)+"\n"
         else:
             print("!! Invalid solution ",file,",", int(end_time-start_time),",", [x for x in solution.history])
     else:

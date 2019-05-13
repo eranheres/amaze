@@ -67,7 +67,7 @@ def dfs_limited(max_time, max_reps, filename, level, width, start_pos):
     stack = []
     hashes = set()
 
-    env = Env.from_params(level_rep=level, pos=start_pos, dim_x=width)
+    env = Env.from_params(level_rep=level, pos=start_pos, dim_x=width, tunneling=True)
     stack.append(env)  # push the initial state
     max_coverage = 0
     nodes_cnt = 0
@@ -117,7 +117,7 @@ def count_nodes(level, width, start_pos):
         pos = stack.pop()
         possible_ops = Env.possible_ops(level, width, pos)
         for op in possible_ops:
-            new_pos, x = Env.prepare_nodes_do_step(level, width, pos, op)
+            new_pos, x = Env.prepare_nodes_do_step(level, width, pos, op, True)
             if new_pos in hash:
                 continue
             stack.append(new_pos)
@@ -172,8 +172,6 @@ def dfs_islands(filename, env):
                 nodes_cnt = 0
                 #if (int(time.time() - start_time) > 100):
                 #    return None
-            for op in env.possible_ops():
-                env.get
             for op in env.possible_ops():
                 new_env = env.do_step(op)
                 if new_env.no_change > max_reps:

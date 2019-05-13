@@ -24,9 +24,10 @@ class Env:
         self.prev_move = 'N'
         self.state_len = 0
         self.no_change_count = 0
+        self.tunneling = False
 
     @classmethod
-    def from_params(cls, level_rep, dim_x, pos):
+    def from_params(cls, level_rep, dim_x, pos, tunneling = False):
         env = cls()
         env.pos = pos
         env.history = []
@@ -36,6 +37,7 @@ class Env:
         env.prev_move = 'N'
         env.no_change_count = 0
         env.state_len = level_rep.count(EMPTY) + level_rep.count(COLORED)
+        env.tunneling = tunneling
         env.prepare_nodes(level_rep, dim_x, env.pos)
         return env
 
@@ -50,10 +52,11 @@ class Env:
         new_env.goal = env.goal
         new_env.nodes = env.nodes
         new_env.state_len = env.state_len
+        new_env.tunneling = env.tunneling
         return new_env
 
     @staticmethod
-    def prepare_nodes_do_step(level_rep, dims_x, start_pos, op):
+    def prepare_nodes_do_step(level_rep, dims_x, start_pos, op, tunneling):
         lvl = [*level_rep]
         pos = start_pos
         while True:
@@ -73,7 +76,8 @@ class Env:
                     break
             if pos == start_pos:
                 break
-            break # remove this break to return tunneling
+            if not tunneling:
+                break
             possible_ops = Env.possible_ops(lvl, dims_x, pos)
             if len(possible_ops) == 2:
                 if Env.is_opposite_move(possible_ops[0], op):
@@ -102,7 +106,7 @@ class Env:
             pos = stack.pop()
             possible_ops = self.possible_ops(level_rep, dims_x, pos)
             for op in possible_ops:
-                new_pos, val = self.prepare_nodes_do_step(level_rep, dims_x, pos, op)
+                new_pos, val = self.prepare_nodes_do_step(level_rep, dims_x, pos, op, self.tunneling)
                 if pos not in self.nodes:
                     self.nodes[pos] = {}
                 self.nodes[pos][op] = (new_pos, val)
@@ -148,12 +152,13 @@ class Env:
         return float(bin(self.state)[2:].count('1'))/self.state_len
 
     @staticmethod
-    def get_printable_solution(level_rep, dim_x, start_pos, solution):
+    def get_printable_solution(level_rep, dim_x, start_pos, solution, tunneling):
         ret = []
         lvl = [*level_rep]
         lvl[start_pos] = 1
         pos = start_pos
         for op in solution:
+            start_pos = pos
             while True:
                 ret.append(op)
                 delta = {
@@ -168,7 +173,8 @@ class Env:
                     if (lvl[pos] == WALL) or (pos < 0) or (pos >= len(lvl)):
                         pos -= delta
                         break
-                break # remove this to return tunneling
+                if not tunneling:
+                    break
                 if pos == start_pos:
                     break
                 possible_ops = Env.possible_ops(lvl, dim_x, pos)
