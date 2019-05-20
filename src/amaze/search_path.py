@@ -1,128 +1,162 @@
 import time
-from env import UP, DOWN, LEFT, RIGHT, Env
-from myqueue import Queue
+from env import UP, DOWN, LEFT, RIGHT, Env, TUNNEL_OFF
+from myqueue import Queue, PriorityQueue, PriorityStack
+from multiprocessing import Pool, Manager
+from multiprocessing import Queue as Pqueue
 
-
-def print_status(filename, max_reps, time, progress, hash_size, queue_size, node_cnt, depth):
-    print("\r File %s | Reps: %d | Time: %d | Coverage: %d%% | Hash: %d | Queue: %d | Rate: %d | Depth: %d " %
-                     (filename, max_reps, time, progress, hash_size, queue_size, node_cnt, depth), end='')
+def print_status(filename, max_reps, time, progress, hash_size, queue_size, node_cnt, depth, found_path):
+    print("\r File %s | Reps: %d | Time: %d | Coverage: %d%% | Hash: %d | Queue: %d | Rate: %d | Depth: %d | Found: %d" %
+                     (filename, max_reps, time, progress, hash_size, queue_size, node_cnt, depth, found_path), end='')
 
 
 def clean_status():
     print("\r", end='')
 
 
-def bfs(filename, level, width, start_pos):
-    queue = Queue()
-    hashes = set()
-
-    env = Env.from_params(level_rep=level, pos=start_pos, dim_x=width)
-    queue.append(env)  # push the initial state
+def bfs_no_tunneling(filename, env):
+    # stats
     max_coverage = 0
     nodes_cnt = 0
     start_time = time.time()
     print_time = time.time() - 2
+
+    # state
+    queue = Queue()
+    hashes = set()
+    queue.append(env.get_init_state())  # push the initial state
     while not queue.empty():
-        env = queue.pop()
+        state = queue.pop()
         nodes_cnt = nodes_cnt + 1
         if time.time() > print_time + 1:
-            if env.coverage()*100 > max_coverage:
-                max_coverage = env.coverage()*100
-            print_status(filename, -1, int(time.time() - start_time), max_coverage, len(hashes), queue.items, nodes_cnt, len(env.history))
+            if env.coverage(state)*100 > max_coverage:
+                max_coverage = env.coverage(state)*100
+            history = state.get_history()
+            print_status(filename, -1, int(time.time() - start_time), max_coverage, len(hashes),
+                         queue.items, nodes_cnt, len(history), 0)
             print_time = time.time()
             nodes_cnt = 0
-            #if (int(time.time() - start_time) > 100):
-            #    return None
-        possible_moves = env.nodes[env.pos]
-        possible_moves_len = len(possible_moves)
+        possible_moves = env.nodes[state.pos].keys()
+        #possible_moves_len = len(possible_moves)
         for op in possible_moves:
-            if possible_moves_len == 2 and Env.is_opposite_move(op, env.prev_move):
-                continue
-            new_env = env.do_step(op)
-            new_env.prev_move = op
-            new_state_hash = new_env.state_hash()
+            #if (possible_moves_len == 2) and Env.is_opposite_move(op, state.move):
+            #    continue
+            new_state = env.do_step(op=op, state=state)
+            new_state_hash = env.state_hash(new_state)
             if new_state_hash in hashes:
                 continue
-            if new_env.goal_reached():
+            if env.goal_reached(new_state):
                 clean_status()
-                return new_env
+                return new_state
             hashes.add(new_state_hash)
-            queue.append(new_env)
+            queue.append(new_state)
     clean_status()
     return None
 
 
-def dfs(filname, level, width, startpos):
-    best_env = None
-    for max_reps in reversed(range(0, 3)):
-        solution = dfs_limited(5*60, max_reps, filname, level, width, startpos)
-        if solution is None:
-            break
-        if best_env is None or len(solution.history)<=len(best_env.history):
-            best_env = solution
-    return best_env
-
-
-def dfs_limited(max_time, max_reps, filename, level, width, start_pos):
-    stack = []
+def bfs_tunneling(filename, env):
+    queue = PriorityQueue()
     hashes = set()
-
-    env = Env.from_params(level_rep=level, pos=start_pos, dim_x=width, tunneling=True)
-    stack.append(env)  # push the initial state
+    queue.append(env.get_init_state())  # push the initial state
     max_coverage = 0
     nodes_cnt = 0
     start_time = time.time()
     print_time = time.time() - 2
-    while len(stack) != 0:
-        env = stack.pop()
+    best_state = None
+    while not queue.empty():
+        state = queue.pop()
         nodes_cnt = nodes_cnt + 1
         if time.time() > print_time + 1:
-            if env.coverage()*100 > max_coverage:
-                max_coverage = env.coverage()*100
-            print_status(filename, max_reps, (time.time() - start_time), max_coverage, len(hashes), len(stack), nodes_cnt, len(env.history))
+            if env.coverage(state)*100 > max_coverage:
+                max_coverage = env.coverage(state)*100
+            history = state.get_history()
+            print_status(filename, -1, int(time.time() - start_time), max_coverage, len(hashes), len(queue.items),
+                         nodes_cnt, len(history), 0 if not best_state else best_state.depth)
             print_time = time.time()
             nodes_cnt = 0
-            if int(time.time() - start_time) > max_time:
-                return
-        priorities = []
-        for op in env.possible_ops(level, width, env.pos):
-            new_env = env.do_step(op)
-            new_env.prev_move = op
-            if new_env.no_change_count > max_reps:
-                continue
-            new_state_hash = new_env.state_hash()
+        possible_moves = env.nodes[state.pos]
+        for op in possible_moves:
+            new_state = env.do_step(op=op, state=state)
+            #if (state.prev_state and state.prev_state.pos == new_state.pos) and new_state.pos != env.init_pos:
+            #    continue
+            new_state_hash = env.state_hash(new_state)
             if new_state_hash in hashes:
                 continue
-            if new_env.goal_reached():
+            if env.goal_reached(new_state):
+                if (best_state is None) or (best_state.depth > new_state.depth):
+                    best_state = new_state
                 clean_status()
-                return new_env
-            hashes.add(new_state_hash)
-            priorities.append(new_env)
-        priorities.sort(key=lambda x: x.no_change_count)
-        for penv in priorities:
-            if Env.is_opposite_move(penv.prev_move, env.prev_move):
-                stack.append(penv)
-        for penv in priorities:
-            if not Env.is_opposite_move(penv.prev_move, env.prev_move):
-                stack.append(penv)
-    clean_status()
-
-
-def count_nodes(level, width, start_pos):
-    stack = []
-    hash = set()
-    stack.append(start_pos)
-    hash.add(start_pos)
-    while not len(stack) == 0:
-        pos = stack.pop()
-        possible_ops = Env.possible_ops(level, width, pos)
-        for op in possible_ops:
-            new_pos, x, cost = Env.prepare_nodes_do_step(level, width, pos, op, True)
-            if new_pos in hash:
                 continue
-            stack.append(new_pos)
-            hash.add(new_pos)
-    return len(hash)
+            if best_state and best_state.depth < new_state.depth:
+                continue
+            hashes.add(new_state_hash)
+            queue.append(new_state)
+    clean_status()
+    return best_state
+
+
+def dfs(filname, env):
+    best_state = None
+    for max_reps in reversed(range(1)):
+        solution = dfs_limited(5*60, best_state.depth if best_state else 100, filname, env)
+        if solution is None:
+            break
+        if best_state is None or solution.depth <= best_state.depth:
+            best_state = solution
+    return best_state
+
+
+def dfs_limited(max_time, max_depth, filename, env):
+    stack = []
+    hashes = dict()
+
+    state = env.get_init_state()
+    stack.append(state)  # push the initial state
+    max_coverage = 0
+    nodes_cnt = 0
+    start_time = time.time()
+    print_time = time.time() - 2
+    best_state = None
+    best_state_depth = 100
+    while len(stack) != 0:
+        state = stack.pop()
+        if state.depth >= best_state_depth:
+            continue
+        nodes_cnt = nodes_cnt + 1
+        if nodes_cnt>10000 and time.time() > print_time + 1:
+            if env.coverage(state)*100 > max_coverage:
+                max_coverage = env.coverage(state)*100
+            print_status(filename, -1, (time.time() - start_time), max_coverage, len(hashes), len(stack),
+                         nodes_cnt, state.depth, 0)
+            print_time = time.time()
+            nodes_cnt = 0
+            #if int(time.time() - start_time) > max_time:
+            #    return best_state
+        priorities = []
+        for op in env.get_possible_ops(state.pos):
+            new_state = env.do_step(state=state, op=op)
+            if new_state.depth >= best_state_depth:
+                continue
+            new_state_hash = (new_state.pos << env.state_len) | new_state.state # env.state_hash(new_state)
+            if new_state_hash in hashes:
+                if hashes[new_state_hash] < new_state.depth:
+                    continue
+            new_state.prev_move = op
+            hashes[env.state_hash(state)] = new_state.depth
+            if new_state.state == env.goal: #env.goal_reached(new_state):
+                best_state = new_state
+                best_state_depth = best_state.depth
+                print(f"found ({best_state.depth}):{state.get_history()})")
+                continue
+            stack.append(new_state)
+            #if state.prev_state and new_state.pos != state.prev_state.pos:
+            #    priorities.append(new_state)
+            #else:
+            #    priorities.insert(0, new_state)
+        #stack.extend(priorities)
+    clean_status()
+    return best_state
+
+
 
 
 
@@ -140,7 +174,7 @@ def get_island_length(env, op):
         for op in env.possible_ops():
             new_env = env.do_step(op)
             new_pos = new_env.pos
-            if new_pos == start_pos and not is_opposite_move(start_move, op):
+            if new_pos == start_pos and not Env.is_opposite_move(start_move, op):
                 return -1
             if new_pos == start_pos:
                 continue
@@ -164,12 +198,12 @@ def dfs_islands(filename, env):
         while len(stack) != 0:
             env = stack.pop()
             nodes_cnt = nodes_cnt + 1
-            if time.time() > print_time + 1:
-                if env.coverage()*100 > max_coverage:
-                    max_coverage = env.coverage()*100
-                print_status(filename, max_reps, (time.time() - start_time), max_coverage, len(hashes), len(stack), nodes_cnt, len(env.history))
-                print_time = time.time()
-                nodes_cnt = 0
+            #if time.time() > print_time + 1:
+            #    if env.coverage()*100 > max_coverage:
+            #        max_coverage = env.coverage()*100
+            #    print_status(filename, max_reps, (time.time() - start_time), max_coverage, len(hashes), len(stack), nodes_cnt, len(env.history))
+            #    print_time = time.time()
+            #    nodes_cnt = 0
                 #if (int(time.time() - start_time) > 100):
                 #    return None
             for op in env.possible_ops():
