@@ -8,9 +8,9 @@ cd src
 python3 run_combined.py --path ../data/all 
 ````
 
-Presolved solution can be found at solutions/final.txt
+Solved solution can be found at solutions/solution.txt
 
-To compare solutions and validate results use the following:
+To compare solutions and validate the results use the following:
 
 ````
 cd data/all
