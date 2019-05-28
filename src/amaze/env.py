@@ -4,10 +4,14 @@ COLORED = '1'
 WALL = '2'
 
 
-RIGHT = 'R'
-LEFT = 'L'
-UP = 'U'
-DOWN = 'D'
+RIGHT = b'R'
+LEFT = b'L'
+UP = b'U'
+DOWN = b'D'
+RIGHT_STR = RIGHT.decode()
+LEFT_STR = LEFT.decode()
+UP_STR = UP.decode()
+DOWN_STR = DOWN.decode()
 
 TUNNEL_OFF = 0
 TUNNEL_SOFT = 1
@@ -24,7 +28,7 @@ class State:
         state = self
         history = []
         while state is not None:
-            if state.move == 'N':
+            if state.move == b'N':
                 break
             history.insert(0, state.move)
             state = state.prev_state
@@ -70,7 +74,7 @@ class Env:
         state.state = int("".join(self.level_rep).replace(WALL, ''), 2)
         state.pos = self.init_pos
         state.prev_state = None
-        state.move = 'N'
+        state.move = b'N'
         state.no_change_count = 0
         state.depth = 0
         return state
@@ -144,6 +148,18 @@ class Env:
 
     def goal_reached(self, state):
         return state.state == self.goal
+
+    def eval_hash_step(self, state, op):
+        pos, val, depth = self.nodes[state.pos][op]
+        return (pos << self.state_len) | val | state.state, depth + state.depth
+
+    def future_no_change_count(self, state, op):
+        new_pos, val, cost = self.nodes[state.pos][op]
+        new_state = state.state | val
+        if new_state > state.state:
+            return 0
+        else:
+            return state.no_change_count + cost
 
     def do_step(self, state, op):
         #new_state = State.make_copy(state)
@@ -231,7 +247,11 @@ class Env:
             print("Solution not valid")
             return "Solution not valid"
 
-        return ",".join(ret).replace(RIGHT, '1').replace(LEFT, '2').replace(UP, '3').replace(DOWN, '4')
+        return ",".join([x.decode() for x in ret]).\
+            replace(RIGHT_STR, '1').\
+            replace(LEFT_STR, '2').\
+            replace(UP_STR, '3').\
+            replace(DOWN_STR, '4')
 
     def count_nodes(self):
         return len(self.nodes)
@@ -339,3 +359,9 @@ class Env:
                 break
             self.merge_tunnel(target_node_index)
             #print("found node:"+str(target_node_index))
+
+    def calc_complexity(self):
+        complexity = 1
+        for node in self.nodes.values():
+            complexity = complexity * max(1, len(node)-1)
+        return complexity

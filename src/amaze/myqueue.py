@@ -8,9 +8,7 @@ class Queue:
         self.tail = 0
 
     def fromBuffer(self, buffer):
-        newQueue = Queue()
         self.v = buffer
-
 
     def empty(self):
         return self.items == 0
@@ -29,7 +27,6 @@ class Queue:
         self.head = len(self.v)
         self.len = len(self.v)
         self.items = self.len-1
-
 
     def increase_queue(self):
         self.v = self.v + self.v

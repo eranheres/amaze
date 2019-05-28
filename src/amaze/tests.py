@@ -5,8 +5,9 @@ from env import Env, UP, DOWN, LEFT, RIGHT, TUNNEL_SOFT, TUNNEL_OFF, TUNNEL_DEEP
 from myqueue import Queue, PriorityQueue
 from search_path import dfs, bfs_tunneling, bfs_no_tunneling
 from search_multiprocess import bfs_multiproccess
-from validate_solution import validate_solution, validate_solution_text
+from validate_solution import validate_solution
 from load_level import env_from_file
+
 
 class TestEnvMethods(unittest.TestCase):
 
@@ -323,22 +324,6 @@ class TestIslands(unittest.TestCase):
 #        self.assertEqual(4, get_island_length(env, DOWN))
         self.assertEqual(4, env.count_nodes())
 
-    def test_islands3(self):
-        level = \
-            '0,0,0,0,0,0,0,0,0,' \
-            '0,1,1,1,0,0,1,1,0,' \
-            '0,0,0,1,1,1,1,1,0,' \
-            '0,1,1,1,1,1,1,0,0,' \
-            '0,1,1,1,1,1,1,1,0,' \
-            '0,0,0,0,0,0,0,1,0,' \
-            '0,1,1,1,1,1,1,1,0,' \
-            '0,0,0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
-        #env = Env.from_params(list(level), 1, 1, 9, 8)
-        #self.assertEqual(13, get_island_length(env, RIGHT))
-        #env = Env.from_params(list(level), 3, 1, 9, 8)
-        #self.assertEqual(1, get_island_length(env, LEFT))
-        #self.assertEqual(12, get_island_length(env, DOWN))
-
     def test_islands4(self):
         level = \
             '0,0,0,0,0,0,0,0,0,' \
@@ -349,7 +334,7 @@ class TestIslands(unittest.TestCase):
             '0,0,0,0,0,0,0,0,0,' \
             '0,0,0,0,0,0,0,0,0,' \
             '0,0,0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
-        env = Env.from_params(list(level), 9, 9*1+1)
+        Env.from_params(list(level), 9, 9*1+1)
 #        self.assertEqual(-1, get_island_length(env, RIGHT))
 #        self.assertEqual(4, get_island_length(env, DOWN))
 
@@ -391,15 +376,10 @@ class TestTunnels(unittest.TestCase):
                 '0,0,0,0,0,0,0,0,0'.replace('0', '2').replace('1', '0').replace(',', '')
 
             tun_env = Env.from_params(list(level), 9, 10, TUNNEL_SOFT)
-            #self.assertEqual(19, tun_env.count_nodes())
             bfs_tun_state = bfs_tunneling("test", env=tun_env)
 
             env_no_tun = Env.from_params(list(level), 9, 10, TUNNEL_OFF)
-            #self.assertEqual(21, env.count_nodes())
             bfs_no_tun_state = bfs_no_tunneling("test", env=env_no_tun)
-
-            #bfs_history = env.get_printable_solution(bfs_state.get_history())
-            #bfs_tun_history = tun_env.get_printable_solution(bfs_tun_state.get_history())
 
             print("with tunneling:", bfs_tun_state.get_history())
             print("no tunneling  :", bfs_no_tun_state.get_history())
@@ -410,15 +390,32 @@ class TestTunnels(unittest.TestCase):
             print("with tunneling:", sol_tun)
             print("no tunneling  :", sol_no_tun)
 
-            solution_tun = [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in sol_tun.split(",")]
+            solution_tun = [{'1': RIGHT, '2': LEFT, '3': UP, '4': DOWN}[x] for x in sol_tun.split(",")]
             self.assertTrue(validate_solution(solution_tun, level, 9, 10, TUNNEL_OFF))
-            solution_no_tun = [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in sol_no_tun.split(",")]
+            solution_no_tun = [{'1': RIGHT, '2': LEFT, '3': UP, '4': DOWN}[x] for x in sol_no_tun.split(",")]
             self.assertTrue(validate_solution(solution_no_tun, level, 9, 10, TUNNEL_OFF))
             self.assertTrue(validate_solution(solution_tun, level, 9, 10, TUNNEL_OFF))
 
             self.assertEqual(len(solution_no_tun), len(solution_tun))
 
+            a = [1, 3, 1, 2, 4, 2, 3, 1, 3, 1, 3, 1, 4, 2, 3, 2, 1, 3, 1, 2, 4, 2, 3, 1, 3, 2, 4, 1, 4, 3]
+            f = [{1: RIGHT, 2: LEFT, 3: UP, 4: DOWN}[x] for x in a]
+            os.chdir("../../data/all")
+            self.assertEqual(1,1)
+            level, start_pos, width, height = env_from_file("065 dan.xml")
+            self.assertIsNotNone(level)
+            no_tun_env = Env.from_params(level, width, start_pos, TUNNEL_OFF)
+            self.assertTrue(validate_solution(f, level, width, start_pos, TUNNEL_OFF))
+
+
+
+        @staticmethod
+        def printable_from_numbers(v):
+            return [{'1': RIGHT, '2': LEFT, '3': UP, '4': DOWN}[x] for x in v.split(",")]
+            #return [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in v.split(",")]
+
         def test_multiple_levels(self):
+            return
             os.chdir("../../data/test")
             for file in sorted(glob.glob("*.xml")):
                 level, start_pos, width, height = env_from_file(file)
@@ -426,31 +423,44 @@ class TestTunnels(unittest.TestCase):
                 no_tun_env = Env.from_params(level, width, start_pos, TUNNEL_OFF)
                 tun_soft_env = Env.from_params(level, width, start_pos, TUNNEL_SOFT)
                 print(f'Testing {file}: {tun_soft_env.count_nodes()}/{no_tun_env.count_nodes()}')
-                no_tun_state = bfs_no_tunneling(file, no_tun_env)
-                tun_soft_state = bfs_tunneling(file, tun_soft_env)
-                no_tun_dfs_state = dfs(file, no_tun_env)
-                no_tun_multi_state = bfs_multiproccess(file, no_tun_env)
-                self.assertIsNotNone(no_tun_state)
-                self.assertIsNotNone(tun_soft_state)
-                self.assertIsNotNone(no_tun_dfs_state)
-                self.assertIsNotNone(no_tun_multi_state)
-                no_tun_printable = no_tun_env.get_printable_solution(no_tun_state.get_history())
-                tun_soft_printable = tun_soft_env.get_printable_solution(tun_soft_state.get_history())
-                no_tun_dfs_printable = no_tun_env.get_printable_solution(no_tun_dfs_state.get_history())
-                no_tun_mp_printable = no_tun_env.get_printable_solution(no_tun_multi_state.get_history())
-                no_tun_sol = [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in no_tun_printable.split(",")]
-                tun_soft_sol = [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in tun_soft_printable.split(",")]
-                no_tun_dfs_sol = [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in no_tun_dfs_printable.split(",")]
-                no_tun_mul_sol = [x.replace('1', 'R').replace('2', 'L').replace('3', 'U').replace('4', 'D') for x in no_tun_mp_printable.split(",")]
-                self.assertTrue(validate_solution(no_tun_sol, level, width, start_pos, TUNNEL_OFF))
-                self.assertTrue(validate_solution(tun_soft_sol, level, width, start_pos, TUNNEL_OFF))
-                self.assertTrue(validate_solution(no_tun_dfs_sol, level, width, start_pos, TUNNEL_OFF))
-                self.assertTrue(validate_solution(no_tun_mul_sol, level, width, start_pos, TUNNEL_OFF))
-                self.assertEqual(len(no_tun_sol), len(tun_soft_sol))
-                print(no_tun_state.get_history())
-                self.assertEqual(len(no_tun_sol), len(no_tun_dfs_sol))
-                self.assertEqual(len(no_tun_sol), len(no_tun_mul_sol))
 
+                # BFS no tunneling
+                bfs_no_tun_state = bfs_no_tunneling(file, no_tun_env)
+                self.assertIsNotNone(bfs_no_tun_state)
+                bfs_no_tun_printable = no_tun_env.get_printable_solution(bfs_no_tun_state.get_history())
+                print("solution 1:"+bfs_no_tun_printable)
+                bfs_no_tun_sol = self.printable_from_numbers(bfs_no_tun_printable)
+                self.assertTrue(validate_solution(bfs_no_tun_sol, level, width, start_pos, TUNNEL_OFF))
+                base_line = len(bfs_no_tun_sol)
+
+                # BFS tunneling soft
+                bfs_tun_soft_state = bfs_tunneling(file, tun_soft_env)
+                self.assertIsNotNone(bfs_tun_soft_state)
+                print ("111:"+str(bfs_tun_soft_state.get_history()))
+                bfs_tun_soft_printable = tun_soft_env.get_printable_solution(bfs_tun_soft_state.get_history())
+                print("solution 2:"+bfs_tun_soft_printable)
+                bfs_tun_soft_sol = self.printable_from_numbers(bfs_tun_soft_printable)
+                self.assertTrue(validate_solution(bfs_tun_soft_sol, level, width, start_pos, TUNNEL_OFF))
+                self.assertEqual(base_line, len(bfs_no_tun_sol))
+
+                # BFS multi no tunneling
+                bfs_multi_no_tun_state = bfs_multiproccess(file, no_tun_env, 3, False)
+                self.assertIsNotNone(bfs_multi_no_tun_state)
+                print ("222:"+str(bfs_multi_no_tun_state.get_history()))
+                bfs_multi_no_tun_printable = no_tun_env.get_printable_solution(bfs_multi_no_tun_state.get_history())
+                print("solution 2:"+bfs_multi_no_tun_printable)
+                bfs_multi_no_tun_sol = self.printable_from_numbers(bfs_multi_no_tun_printable)
+                self.assertTrue(validate_solution(bfs_multi_no_tun_sol, level, width, start_pos, TUNNEL_OFF))
+                self.assertEqual(base_line, len(bfs_multi_no_tun_sol))
+
+                # BFS multi tunneling soft
+                bfs_multi_tun_soft_state = bfs_multiproccess(file, tun_soft_env, 3, False)
+                self.assertIsNotNone(bfs_multi_tun_soft_state)
+                bfs_multi_tun_soft_printable = tun_soft_env.get_printable_solution(bfs_multi_tun_soft_state.get_history())
+                print("solution 3:"+bfs_multi_tun_soft_printable)
+                bfs_multi_tun_soft_sol = self.printable_from_numbers(bfs_multi_tun_soft_printable)
+                self.assertTrue(validate_solution(bfs_multi_tun_soft_sol, level, width, start_pos, TUNNEL_OFF))
+                self.assertEqual(base_line, len(bfs_multi_tun_soft_sol))
 
 if __name__ == '__main__':
     unittest.main()

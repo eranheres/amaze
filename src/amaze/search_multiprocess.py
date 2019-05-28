@@ -1,18 +1,17 @@
-from multiprocessing import Pool, Queue, Manager
-from amaze.env import Env, TUNNEL_SOFT, TUNNEL_OFF, State
-from amaze.validate_solution import validate_solution
-from load_level import env_from_file
-from multiprocessing import Process, Lock, Queue as MPQueue
-from multiprocessing.sharedctypes import Value, Array
-from ctypes import Structure, c_double, c_uint, c_int, c_wchar, c_buffer, c_byte, c_char
+from multiprocessing import Manager
+from env import State
+from multiprocessing import Process, Lock
+from multiprocessing.sharedctypes import  Array
+from ctypes import Structure, c_uint, c_char
 import math
 import os
-
+import time
 
 
 STATE_LEN = 55
-HISTORY_LEN = 200
+HISTORY_LEN = 60
 num_proc = os.cpu_count()
+
 
 class CState(Structure):
     _fields_ = [('pos', c_uint),
@@ -25,19 +24,18 @@ class CState(Structure):
 
 def ctype_state(state):
     return (state.pos,
-            #state.state.to_bytes(STATE_LEN-3, byteorder="little"),
             str.encode(hex(state.state)[2:]),    # state.state.to_bytes(STATE_LEN-3, byteorder="little"),
-            "NA".encode('utf-8') if len(state.history)>HISTORY_LEN-2 else state.history.encode('utf-8'),
-            str.encode(state.move),
+            state.history,
+            state.move,
             state.no_change_count,
             state.depth)
+
 
 def state_from_ctype(ctype_state):
     s = State()
     s.pos = ctype_state.pos
-    #s.state = int.from_bytes(ctype_state.state, byteorder="little")
     s.state = int(ctype_state.state.decode(), 16)
-    s.history = ctype_state.history.decode('utf-8')
+    s.history = ctype_state.history
     s.move = ctype_state.move
     s.no_change_count = ctype_state.no_change_count
     s.depth = ctype_state.depth
@@ -60,12 +58,16 @@ def print_tuple_state(prefix, cstate, lock):
     lock.acquire()
     print(f"{prefix} | pos {cstate[0]} | state {cstate[1]}")
     lock.release()
+
 debug = False
+print_time = time.time()
 def print_lock(lock, string):
     if debug:
         lock.acquire()
-        print(string)
+        t = "{0:.3f}".format(time.time() - print_time)
+        print(f'{t}: {string}')
         lock.release()
+
 
 class DummyState:
     def __init__(self, history):
@@ -74,36 +76,48 @@ class DummyState:
     def get_history(self):
         return self.history
 
+
+def truncate_hash(hash, level):
+    entries_to_remove = []
+    for k, l in hash.items():
+        if l < level - 1:
+            entries_to_remove.append(k)
+    for k in entries_to_remove:
+        hash.pop(k, None)
+
+
 def bfs_job(v):
-    proc_num, q, env, list, start, size, lock = v
+    proc_num, q, env, list, start, size, lock, max_no_change_cnt = v
     new_list = []
     print_lock(lock, f'Process: {proc_num}, start:{start}, size:{size}, starting process')
-    found_state = None
     for i in range(start, min(len(list), start+size)):
         c_type_state = list[i]
-        #print_cstate("job cstate",c_type_state,lock)
-        state = state_from_ctype(c_type_state)
-        #print_state("job state ",state,lock)
-        if env.state_hash(state) == 16397606763625458197655520905476582158387:
-            print_lock(lock, f'found in process 16397606763625458197655520905476582158387')
-        for op in env.get_possible_ops(state.pos):
-            new_state = env.do_step(state, op)
-            #print_state("job new state ",new_state,lock)
-            new_state.history = state.history + op
-            new_list.append(ctype_state(new_state))
-            if env.goal_reached(state):
-                found_state = state
-                break
+        current_state = int(c_type_state.state.decode(), 16)
+        for op in env.get_possible_ops(c_type_state.pos):
+            new_pos, val, cost = env.nodes[c_type_state.pos][op]
+            new_state = current_state | val
+            if new_state > current_state:
+                no_change_count = 0
+            else:
+                no_change_count = c_type_state.no_change_count + cost
+                if no_change_count > max_no_change_cnt:
+                    continue
+            new_list.append((new_pos,
+                             str.encode(hex(new_state)[2:]),    # state.state.to_bytes(STATE_LEN-3, byteorder="little"),
+                             c_type_state.history + op,
+                             op,
+                             no_change_count,
+                             c_type_state.depth + cost))
+    #print_lock(lock, f'Process: {proc_num} pushing data. list {len(new_list)}')
     q.put(new_list)
-    q.put(found_state)
+    #print_lock(lock, f'Process: {proc_num} done')
 
 
-def bfs_multiproccess(file, env):
-    print(file)
+def bfs_multiproccess(file, env, no_change_cnt, truncate):
+    print_time = time.time()
     if math.ceil(env.state_len/8) >= STATE_LEN:
         print(f"Increase state len to {math.ceil(env.state_len/4)}")
         return None
-    pool = (num_proc)
     queues = []
     for i in range(num_proc):
         queues.append(Manager().Queue())
@@ -112,62 +126,77 @@ def bfs_multiproccess(file, env):
     lis = []
     lock = Lock()
     init_state = env.get_init_state()
-    init_state.history = ""
+    init_state.history = b''
+    init_state.move = b'N'
     lis.append(ctype_state(init_state))  # push the initial state
-
 
     found_state = None
     count = 0
-    max_shared_block = 10000
-    while not found_state and len(lis)>0:
+    max_shared_block = 100000
+    best_depth = 200
+    while len(lis)>0:
         act_proc = min(max(1,len(lis)), num_proc)
-        chunk_size = max(math.ceil(len(lis)/num_proc), 1)
         all_list = lis
-        for pos_in_all_lis in range(0, len(lis), max_shared_block):
-            print_lock(lock, f"Makeing shared memory at {pos_in_all_lis}-{pos_in_all_lis+max_shared_block}")
-            #for x in all_list[pos_in_all_lis:pos_in_all_lis+max_shared_block]:
+        lis = []
+        chunk_count = 0
+        for pos_in_all_lis in range(0, len(all_list), max_shared_block):
+
+            chunk_size = math.ceil(min(max_shared_block, len(all_list))/num_proc)
+            chunk_count += 1
+            #print_lock(lock, f"Makeing shared memory at {pos_in_all_lis}-{pos_in_all_lis+max_shared_block} ({chunk_count}/{math.ceil(len(all_list)/max_shared_block)})")
             #    print_tuple_state("copy to shared mem:",x,lock)
             shared_array = Array(CState, all_list[pos_in_all_lis:pos_in_all_lis+max_shared_block], lock=False)
-            print_lock(lock, f"making input for processes. all_size:{len(lis)} chunk_size:{chunk_size}")
-            lis = []
-            input = [(i, queues[i], env, shared_array, i*chunk_size, chunk_size, lock) for i in list(range(act_proc))]
-            print_lock(lock, f"Starting {len(input)} jobs")
+            #print_lock(lock, f"making input for processes. all_size:{len(all_list)} chunk_size:{chunk_size}")
+            input = [(i, queues[i], env, shared_array, i*chunk_size, chunk_size, lock, no_change_cnt) for i in list(range(act_proc))]
+            #print_lock(lock, f"Starting {len(input)} jobs")
             pool = []
             for i in input:
                 proc=Process(target=bfs_job, args=(i,))
                 pool.append(proc)
             for p in pool:
                 p.start()
-            i = 0
-            for p in pool:
-                p.join()
-                print_lock(lock, f'Joined on process {i}')
-                for state in queues[i].get():
-                    state_hash = (state[0] << env.state_len) + int(state[1].decode(), 16)
-                    look_for = \
-                        ['R', 'D', 'L', 'D', 'L', 'U', 'D', 'R', 'U', 'R', 'D', 'L', 'U', 'D', 'R', 'U', 'R', 'D', 'L', 'U', 'R', 'U', 'L', 'D', 'L', 'U', 'L', 'D', 'L', 'U', 'R']
-                    #print(list(state[2].decode('utf-8')))
-                    #print_tuple_state("debug ", state, lock)
-                    #f = False
-                    #if list(state[2].decode('utf-8'))[:5] == look_for[:5]:
-                    #    print_tuple_state("Found yyy", state, lock)
-                    #    print_lock(lock, f'{env.state_len} {state_hash}')
-                    #    f = True
-                    if state_hash in hashes and hashes[state_hash] <= state[5]:
+            while any(pool):
+                proc_loc = -1
+                while True:
+                    for p in range(len(pool)):
+                        if pool[p] and not pool[p].is_alive():
+                            proc_loc = p
+                    if proc_loc != -1:
+                        break
+                    time.sleep(0.01)
+                pool[proc_loc].join()
+                #print_lock(lock, f'Pulling from process {proc_loc}')
+                for state in queues[proc_loc].get():
+                    if state[5]>best_depth:
                         continue
-                    #if f:
-                    #    print_tuple_state("Adding ", state, lock)
+                    s = int(state[1].decode(), 16)
+                    state_hash = (state[0] << env.state_len) + s
+                    #if state_hash in hashes and hashes[state_hash] <= state[5]:
+                    if hashes.get(state_hash, 200) <= state[5]:
+                        continue
                     hashes[state_hash] = state[5]
                     lis.append(state)
-                state = queues[i].get()
-                if state is not None:
-                    found_state = state
-                    print_lock(lock, "Found "+str(list(found_state.history)))
-                    return DummyState(list(found_state.history))
-                i += 1
+                    if s == env.goal:
+                        found_state = State()
+                        found_state.history = state[2]
+                        best_depth = state[5]
+                        #print_lock(lock, f'{s} {found_state.history}')
+                        #return DummyState(list(found_state.history))
+                #print_lock(lock, f'Completed pulling from process {proc_loc}')
+                pool[proc_loc].terminate()
+                pool[proc_loc] = None
         count += 1
-        print_lock(lock, f'count:{count} tree:{len(lis)} hash:{len(hashes)}')
-        [p.terminate() for p in pool]
+        #print(f'truncating hash {len(hashes)}')
+        if truncate:
+            truncate_hash(hashes, count)
+        t = "{0:.3f}".format(time.time() - print_time)
+        print(f'\r{t} :=======> count:{count} tree:{len(lis)} hash:{len(hashes)} found:{"true" if found_state else "false"}', end='')
+        #print(f'{t} :=======> count:{count} tree:{len(lis)} hash:{len(hashes)}')
 
+    print("\r", end='')
     if not found_state:
-        print("not found")
+        print(f'"{file} solution not found !!!')
+        return None
+    else:
+        print(f'{file} found solution at level {best_depth}')
+    return DummyState([chr(x).encode() for x in found_state.history])

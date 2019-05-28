@@ -12,12 +12,15 @@ parser.add_argument('--path', default='../data/all', dest='path', help='path to 
 parser.add_argument('--max_nodes', default=47, dest='max_nodes', help='path to data')
 parser.add_argument('--algo', default='bfs', dest='algo', help='bfs of dfs')
 parser.add_argument('--tunnel', default='off', dest='tunnel', help='off soft deep')
+parser.add_argument('--no_chg_cnt', default=3, dest='no_chg_cnt', help='no change count')
+
 args = parser.parse_args()
 print("parsing:", args.path)
 max_nodes = int(args.max_nodes)
 algo = args.algo
 os.chdir(args.path)
 tot = ""
+
 for file in sorted(glob.glob("*.xml")):
     level, start_pos, width, height = env_from_file(file)
     if level is None:
@@ -32,9 +35,10 @@ for file in sorted(glob.glob("*.xml")):
         tot += file +", -1\n"
         print("Skipping level "+file+" with nodes="+str(nodes))
         continue
+    print(algo, ",tunn:", str(tun), ",", display_file)
     solution = None
     if args.algo == "bfs_multi":
-        solution = bfs_multiproccess(file, env)
+        solution = bfs_multiproccess(file, env, args.no_chg_cnt)
     elif args.algo == "bfs":
         if tun == TUNNEL_OFF:
             solution = bfs_no_tunneling(display_file, env)

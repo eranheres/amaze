@@ -1,14 +1,5 @@
-import os
-import struct
 import time
-from multiprocessing import Pool, Queue, Manager
-from amaze.env import Env, TUNNEL_DEEP, TUNNEL_OFF, TUNNEL_SOFT, State
-from load_level import env_from_file
-from multiprocessing import Process, Lock, Queue as MPQueue
-from multiprocessing.sharedctypes import Value, Array
-from ctypes import Structure, c_double, c_uint, c_wchar, c_buffer, c_char
-import ctypes
-import math
+from multiprocessing import Pool, Manager
 
 
 def dfs_job(env, state, best_depth, hashes):
@@ -30,19 +21,17 @@ def dfs_job(env, state, best_depth, hashes):
             new_state = env.do_step(state=state, op=op)
             new_state.prev_move = op
             new_hash[new_state_hash] = depth
-            if new_state.state == env.goal: #env.goal_reached(new_state):
+            if new_state.state == env.goal:
                 best_state = new_state
                 best_depth = best_state.depth
-                #print(f"found ({best_state.depth}):{state.get_history()})")
                 continue
             stack.append(new_state)
-    return (stack, count, best_depth, best_state, new_hash)
+    return stack, count, best_depth, best_state, new_hash
 
 
 def dfs_multi(env):
     stack = []
     pool = Pool(7)
-    manager = Manager()
     hashes = dict()
     start_depth = 200
     best_depth = start_depth
@@ -78,16 +67,8 @@ def dfs_multi(env):
                         if key in hashes and hashes[key] <= val:
                             continue
                         hashes[key] = val
-                    #hashes.update(new_hash)
                     results.pop(i)
                     break
                 time.sleep(0.02)
     return best_state
 
-
-
-#level, start_pos, width, height = env_from_file("../data/all/058.xml")
-#env = Env.from_params(level, width, start_pos, TUNNEL_DEEP)
-#print("Env length:"+str(env.state_len))
-#solution = dfs(env)
-#print("The solution ==>"+str(solution.get_history()))

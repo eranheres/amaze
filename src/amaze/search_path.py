@@ -36,10 +36,7 @@ def bfs_no_tunneling(filename, env):
             print_time = time.time()
             nodes_cnt = 0
         possible_moves = env.nodes[state.pos].keys()
-        #possible_moves_len = len(possible_moves)
         for op in possible_moves:
-            #if (possible_moves_len == 2) and Env.is_opposite_move(op, state.move):
-            #    continue
             new_state = env.do_step(op=op, state=state)
             new_state_hash = env.state_hash(new_state)
             if new_state_hash in hashes:

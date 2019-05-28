@@ -1,0 +1,557 @@
+[ec2-user@ip-10-192-10-148 src]$ python3 run_combined.py --path ../data/all
+parsing: ../data/all
+=> 001.xml(4) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+001.xml(4) time:0  algo:l-0 tunn:0 depth:4 solution:[b'R', b'U', b'L', b'D']Rate: 1 | Depth: 0 | Found: 0
+=> 002.xml(6) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+002.xml(6) time:0  algo:l-0 tunn:0 depth:5 solution:[b'U', b'R', b'D', b'L', b'U']1 | Depth: 0 | Found: 0
+=> 003.xml(8) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+003.xml(8) time:0  algo:l-0 tunn:0 depth:7 solution:[b'R', b'U', b'L', b'D', b'R', b'U', b'D'] | Found: 0
+=> 004.xml(12) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+004.xml(12) time:0  algo:l-0 tunn:0 depth:12 solution:[b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'D']
+=> 005.xml(14) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+005.xml(14) time:0  algo:l-1 tunn:1 depth:9 solution:[b'R', b'L', b'U', b'R', b'U', b'R', b'L', b'U', b'L']
+=> 006.xml(17) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+006.xml(17) time:0  algo:l-1 tunn:1 depth:16 solution:[b'R', b'U', b'L', b'U', b'R', b'U', b'D', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'D']
+=> 007.xml(10) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+007.xml(10) time:0  algo:l-1 tunn:1 depth:10 solution:[b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'D', b'L']
+=> 008.xml(8) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+008.xml(8) time:0  algo:l-0 tunn:0 depth:7 solution:[b'R', b'U', b'R', b'D', b'L', b'U', b'R'] | Found: 0
+=> 009.xml(21) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+009.xml(21) time:0  algo:l-1 tunn:1 depth:16 solution:[b'U', b'R', b'U', b'L', b'D', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'D']
+=> 010.xml(14) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+010.xml(14) time:0  algo:l-1 tunn:1 depth:10 solution:[b'U', b'R', b'L', b'D', b'R', b'U', b'R', b'L', b'U', b'L']
+=> 011.xml(12) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+011.xml(12) time:0  algo:l-0 tunn:0 depth:12 solution:[b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'D']
+=> 012.xml(15) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+012.xml(15) time:0  algo:l-1 tunn:1 depth:13 solution:[b'U', b'D', b'R', b'L', b'U', b'R', b'U', b'R', b'U', b'L', b'D', b'L', b'R']
+=> 013.xml(8) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+013.xml(8) time:0  algo:l-0 tunn:0 depth:8 solution:[b'R', b'U', b'L', b'D', b'L', b'U', b'L', b'D']nd: 0
+=> 014.xml(9) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+014.xml(9) time:0  algo:l-0 tunn:0 depth:8 solution:[b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'L']nd: 0
+=> 015.xml(14) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+015.xml(14) time:0  algo:l-1 tunn:1 depth:12 solution:[b'U', b'U', b'L', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'D', b'R']
+=> 016.xml(16) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+016.xml(16) time:0  algo:l-1 tunn:1 depth:15 solution:[b'U', b'R', b'D', b'U', b'R', b'L', b'D', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L']
+=> 017.xml(24) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+017.xml(24) time:0  algo:l-1 tunn:1 depth:24 solution:[b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'D', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'D', b'L', b'D']
+=> 018.xml(28) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+018.xml(28) time:0  algo:l-1 tunn:1 depth:24 solution:[b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'D', b'L', b'U', b'D', b'R', b'U']
+=> 019.xml(17) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+019.xml(17) time:0  algo:l-1 tunn:1 depth:13 solution:[b'U', b'D', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'R', b'D', b'L']
+=> 020.xml(33) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+020.xml(33) time:0  algo:l-1 tunn:1 depth:28 solution:[b'R', b'U', b'L', b'U', b'L', b'D', b'D', b'U', b'L', b'R', b'U', b'R', b'U', b'L', b'U', b'R', b'L', b'D', b'R', b'D', b'R', b'L', b'U', b'D', b'R', b'L', b'U', b'D']
+=> 021.xml(18) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+021.xml(18) time:0  algo:l-1 tunn:1 depth:15 solution:[b'R', b'D', b'U', b'L', b'U', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'U', b'L', b'D']
+=> 022.xml(22) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+022.xml(22) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'L', b'D', b'R', b'L', b'D', b'U', b'R', b'U', b'L', b'U', b'L', b'R', b'U', b'R', b'L', b'D']
+=> 023.xml(14) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+023.xml(14) time:0  algo:l-1 tunn:1 depth:12 solution:[b'R', b'U', b'L', b'D', b'L', b'D', b'L', b'U', b'R', b'D', b'R', b'D']
+=> 024.xml(13) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+024.xml(13) time:0  algo:l-1 tunn:1 depth:11 solution:[b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'R', b'D', b'L', b'U']
+=> 025.xml(15) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+025.xml(15) time:0  algo:l-1 tunn:1 depth:14 solution:[b'R', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'L', b'U', b'R', b'D']
+=> 026.xml(13) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+026.xml(13) time:0  algo:l-1 tunn:1 depth:13 solution:[b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'U', b'L']
+=> 027.xml(19) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+027.xml(19) time:0  algo:l-1 tunn:1 depth:15 solution:[b'U', b'L', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'L', b'U', b'D', b'R']
+=> 028.xml(10) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+028.xml(10) time:0  algo:l-1 tunn:1 depth:10 solution:[b'R', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'D', b'R']
+=> 029.xml(11) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+029.xml(11) time:0  algo:l-1 tunn:1 depth:6 solution:[b'U', b'R', b'U', b'R', b'D', b'L']pth: 0 | Found: 0
+=> 030.xml(34) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+030.xml(34) found solution at level 259222 found:truetruee
+030.xml(34) time:1  algo:l-4 tunn:1 depth:25 solution:[b'U', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D']
+=> 031.xml(28) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+031.xml(28) time:0  algo:l-1 tunn:1 depth:19 solution:[b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'R', b'D', b'L', b'U', b'D', b'L', b'U', b'R', b'U', b'R', b'D', b'L']
+=> 032.xml(15) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+032.xml(15) time:0  algo:l-1 tunn:1 depth:11 solution:[b'R', b'U', b'R', b'D', b'R', b'L', b'U', b'R', b'D', b'L', b'U']
+=> 033.xml(10) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+033.xml(10) time:0  algo:l-0 tunn:0 depth:11 solution:[b'R', b'L', b'U', b'R', b'D', b'U', b'L', b'U', b'R', b'D', b'L']
+=> 034.xml(16) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+034.xml(16) time:0  algo:l-1 tunn:1 depth:15 solution:[b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U']
+=> 035.xml(25) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+035.xml(25) time:0  algo:l-1 tunn:1 depth:20 solution:[b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'U', b'L', b'R', b'D', b'L', b'D']
+=> 036.xml(24) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+036.xml(24) time:0  algo:l-1 tunn:1 depth:17 solution:[b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'U']
+=> 037.xml(21) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+037.xml(21) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'R', b'D', b'L']
+=> 038.xml(26) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+038.xml(26) time:1  algo:l-1 tunn:1 depth:26 solution:[b'R', b'L', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'D', b'R', b'D', b'L', b'U', b'L', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'L']
+=> 039.xml(20) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+039.xml(20) time:0  algo:l-1 tunn:1 depth:19 solution:[b'R', b'L', b'U', b'R', b'D', b'U', b'R', b'D', b'R', b'L', b'U', b'D', b'R', b'U', b'U', b'L', b'R', b'D', b'L']
+=> 040.xml(20) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+040.xml(20) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'U']
+=> 041.xml(26) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+041.xml(26) time:0  algo:l-1 tunn:1 depth:20 solution:[b'U', b'R', b'U', b'D', b'R', b'U', b'L', b'D', b'U', b'L', b'D', b'U', b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'D']
+=> 042.xml(25) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+042.xml(25) time:0  algo:l-1 tunn:1 depth:20 solution:[b'R', b'U', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'D', b'L', b'D', b'U', b'R', b'U', b'D', b'L', b'U', b'R']
+=> 043.xml(22) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+043.xml(22) time:0  algo:l-1 tunn:1 depth:18 solution:[b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'L', b'R', b'U', b'L', b'D', b'U', b'R', b'R', b'D', b'L', b'D']
+=> 044.xml(29) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+044.xml(29) time:0  algo:l-1 tunn:1 depth:26 solution:[b'R', b'L', b'U', b'R', b'U', b'L', b'U', b'D', b'R', b'D', b'U', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'L', b'D', b'R', b'D', b'R', b'D', b'L', b'U']
+=> 045.xml(15) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+045.xml(15) time:0  algo:l-1 tunn:1 depth:8 solution:[b'U', b'R', b'U', b'R', b'D', b'U', b'R', b'L']nd: 0
+=> 046.xml(19) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+046.xml(19) time:0  algo:l-1 tunn:1 depth:17 solution:[b'U', b'D', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'R', b'U', b'D', b'L', b'U']
+=> 047.xml(27) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+047.xml(27) time:0  algo:l-1 tunn:1 depth:18 solution:[b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'R']
+=> 048.xml(35) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+048.xml(35) time:0  algo:l-1 tunn:1 depth:29 solution:[b'R', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'R', b'U', b'R', b'D', b'R', b'L', b'U', b'R', b'L', b'D', b'R', b'L', b'D', b'R']
+=> 049.xml(26) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+049.xml(26) time:0  algo:l-1 tunn:1 depth:21 solution:[b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'D', b'R', b'L']
+=> 050.xml(29) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+050.xml(29) time:0  algo:l-1 tunn:1 depth:25 solution:[b'R', b'U', b'L', b'D', b'L', b'D', b'R', b'U', b'R', b'D', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'D', b'L', b'U', b'D', b'R']
+=> 051.xml(33) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+051.xml(33) time:15  algo:l-1 tunn:1 depth:31 solution:[b'R', b'U', b'R', b'U', b'D', b'L', b'D', b'U', b'R', b'U', b'R', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'D', b'R', b'U', b'R', b'U', b'R', b'D', b'U', b'L']
+=> 052.xml(25) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+052.xml(25) time:0  algo:l-1 tunn:1 depth:20 solution:[b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'L', b'U', b'D', b'R', b'D', b'R', b'U', b'L', b'U', b'D']
+=> 053.xml(36) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+053.xml(36) found solution at level 258 found:truee
+053.xml(36) time:0  algo:l-2 tunn:1 depth:25 solution:[b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'D', b'L', b'D', b'R']
+=> 054.xml(32) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+054.xml(32) time:1  algo:l-1 tunn:1 depth:31 solution:[b'U', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'R', b'U', b'D', b'R', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'R']
+=> 055.xml(50) level:l-5 base_comp:9 act_complex:9 algo:bfs_multi tunn:deep no_count:0
+055.xml(50) found solution at level 4717008 found:trueeeese
+055.xml(50) time:1  algo:l-5 tunn:2 depth:21 solution:[b'R', b'D', b'R', b'L', b'R', b'L', b'L', b'L', b'D', b'R', b'D', b'L', b'R', b'R', b'L', b'U', b'R', b'L', b'U', b'R', b'L']
+=> 056.xml(37) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+056.xml(37) found solution at level 325546463 found:true:truee
+056.xml(37) time:47  algo:l-4 tunn:1 depth:32 solution:[b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'L', b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'L', b'D', b'U', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'R']
+=> 057.xml(63) level:l-5 base_comp:9 act_complex:9 algo:bfs_multi tunn:deep no_count:0
+057.xml(63) found solution at level 602091 found:trueeeee
+057.xml(63) time:1  algo:l-5 tunn:2 depth:23 solution:[b'R', b'R', b'U', b'L', b'D', b'U', b'D', b'U', b'D', b'R', b'R', b'L', b'R', b'R', b'D', b'U', b'R', b'U', b'L', b'D', b'D', b'D', b'D']
+=> 058.xml(75) level:l-6 base_comp:11 act_complex:11 algo:bfs_multi tunn:deep no_count:1
+058.xml(75) found solution at level 76:18149396 found:trueeeeeese
+058.xml(75) time:172  algo:l-6 tunn:2 depth:33 solution:[b'R', b'D', b'L', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'R', b'D', b'L', b'U', b'L', b'R', b'R', b'L', b'R', b'R', b'R', b'U', b'D', b'D', b'U', b'L', b'D', b'R', b'U', b'D', b'L', b'U']
+=> 059.xml(29) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+059.xml(29) time:0  algo:l-1 tunn:1 depth:23 solution:[b'U', b'R', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'R', b'D', b'L', b'R', b'U', b'R', b'U', b'D', b'L', b'U', b'U', b'L', b'D', b'R']
+=> 060.xml(28) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+060.xml(28) time:0  algo:l-1 tunn:1 depth:23 solution:[b'R', b'D', b'L', b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'D', b'R', b'U', b'D', b'L', b'U']
+=> 061.xml(33) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+061.xml(33) time:1  algo:l-1 tunn:1 depth:24 solution:[b'R', b'L', b'U', b'R', b'U', b'R', b'D', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'R', b'U', b'L', b'R', b'D', b'U', b'R', b'L', b'U', b'D']
+=> 062.xml(39) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+062.xml(39) found solution at level 356975305 found:true:truee
+062.xml(39) time:62  algo:l-4 tunn:1 depth:34 solution:[b'U', b'D', b'R', b'U', b'R', b'D', b'R', b'L', b'U', b'R', b'U', b'R', b'D', b'L', b'D', b'R', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'U', b'L', b'R', b'D', b'R', b'L', b'D', b'R', b'U', b'R']
+=> 063.xml(30) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+063.xml(30) time:0  algo:l-1 tunn:1 depth:29 solution:[b'U', b'R', b'D', b'U', b'L', b'U', b'R', b'D', b'R', b'D', b'R', b'L', b'U', b'R', b'D', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'U', b'R', b'L', b'D']
+=> 064.xml(42) level:l-4 base_comp:8 act_complex:8 algo:bfs_multi tunn:soft no_count:3
+064.xml(42) found solution at level 321538211 found:true:true
+064.xml(42) time:12  algo:l-4 tunn:1 depth:32 solution:[b'U', b'R', b'D', b'R', b'D', b'R', b'U', b'L', b'U', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'R', b'U', b'L', b'U', b'R', b'U', b'D', b'L', b'D', b'R', b'D', b'U', b'L', b'D', b'L']
+=> 065 dan.xml(28) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+065 dan.xml(28) time:0  algo:l-1 tunn:1 depth:28 solution:[b'R', b'L', b'U', b'U', b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'U', b'R', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'D']
+=> 066 dan.xml(17) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+066 dan.xml(17) time:0  algo:l-1 tunn:1 depth:18 solution:[b'R', b'L', b'U', b'R', b'D', b'L', b'R', b'D', b'U', b'L', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U']
+=> 067 dan.xml(24) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+067 dan.xml(24) time:0  algo:l-1 tunn:1 depth:25 solution:[b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'U', b'R', b'L', b'D', b'R', b'L', b'U']
+=> 068 dan.xml(16) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+068 dan.xml(16) time:0  algo:l-1 tunn:1 depth:16 solution:[b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'R', b'D']
+=> 069 dan.xml(34) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+069 dan.xml(34) time:1  algo:l-1 tunn:1 depth:35 solution:[b'R', b'U', b'R', b'D', b'R', b'U', b'L', b'U', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'U', b'L', b'R', b'D', b'U', b'L', b'R', b'D', b'R', b'L', b'U', b'L']
+=> 070 dan.xml(18) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+070 dan.xml(18) time:0  algo:l-1 tunn:1 depth:16 solution:[b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'R', b'R']
+=> 071 dan.xml(45) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+071 dan.xml(45) time:0  algo:l-1 tunn:1 depth:41 solution:[b'U', b'U', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'L', b'D', b'R', b'D', b'R', b'U', b'D', b'L', b'D', b'L', b'R', b'U', b'L']
+=> 072 dan.xml(20) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+072 dan.xml(20) time:0  algo:l-1 tunn:1 depth:16 solution:[b'U', b'L', b'U', b'R', b'L', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'L']
+=> 073 dan.xml(33) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+073 dan.xml(33) time:0  algo:l-1 tunn:1 depth:30 solution:[b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'D', b'L', b'D', b'L', b'R', b'U', b'L', b'U']
+=> 074 dan.xml(15) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+074 dan.xml(15) time:0  algo:l-0 tunn:0 depth:17 solution:[b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'D', b'L', b'U', b'R', b'U']
+=> 075 dan.xml(15) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+075 dan.xml(15) time:0  algo:l-1 tunn:1 depth:17 solution:[b'U', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'U']
+=> 076 dan.xml(25) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+076 dan.xml(25) time:0  algo:l-1 tunn:1 depth:22 solution:[b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'U', b'L', b'U', b'R', b'U', b'R', b'L', b'D', b'L', b'R', b'D', b'R', b'L', b'U', b'D']
+=> 077 dan.xml(15) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+077 dan.xml(15) time:0  algo:l-1 tunn:1 depth:11 solution:[b'R', b'L', b'U', b'L', b'U', b'R', b'U', b'L', b'R', b'D', b'L']
+=> 078 dan.xml(20) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+078 dan.xml(20) time:0  algo:l-1 tunn:1 depth:18 solution:[b'U', b'R', b'L', b'D', b'R', b'U', b'L', b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'L']
+=> 079 dan.xml(29) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+079 dan.xml(29) time:0  algo:l-1 tunn:1 depth:26 solution:[b'U', b'R', b'D', b'D', b'L', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'L', b'R', b'D']
+=> 080 dan.xml(27) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+080 dan.xml(27) time:0  algo:l-1 tunn:1 depth:21 solution:[b'R', b'R', b'L', b'D', b'U', b'D', b'R', b'U', b'L', b'U', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'R', b'U', b'L', b'R']
+=> 081 dan.xml(21) level:l-0 base_comp:1 act_complex:1 algo:bfs tunn:off no_count:-1
+081 dan.xml(21) time:0  algo:l-0 tunn:0 depth:22 solution:[b'R', b'U', b'R', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'R', b'U', b'L', b'U', b'L', b'D']
+=> 082 dan.xml(34) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+082 dan.xml(34) time:0  algo:l-1 tunn:1 depth:25 solution:[b'U', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'U', b'R', b'U', b'D', b'L', b'R', b'D', b'U', b'R', b'L', b'D', b'L', b'R', b'D', b'L', b'R', b'U']
+=> 083 dan.xml(15) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+083 dan.xml(15) time:0  algo:l-1 tunn:1 depth:12 solution:[b'U', b'R', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'R']
+=> 084 dan.xml(24) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+084 dan.xml(24) time:0  algo:l-1 tunn:1 depth:23 solution:[b'U', b'R', b'L', b'D', b'R', b'L', b'D', b'R', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'R', b'D', b'D', b'L', b'R', b'U', b'L']
+=> 085 dan.xml(38) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+085 dan.xml(38) time:0  algo:l-1 tunn:1 depth:32 solution:[b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'L', b'D', b'L', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'R', b'U', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L']
+=> 086 dan.xml(29) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+086 dan.xml(29) time:0  algo:l-1 tunn:1 depth:29 solution:[b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'D', b'U', b'L', b'D']
+=> 087 dan.xml(29) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+087 dan.xml(29) time:0  algo:l-1 tunn:1 depth:27 solution:[b'R', b'U', b'L', b'U', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'D', b'L', b'D', b'L', b'D', b'L']
+=> 088 dan.xml(39) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+088 dan.xml(39) time:0  algo:l-1 tunn:1 depth:30 solution:[b'R', b'L', b'U', b'R', b'U', b'R', b'U', b'D', b'L', b'U', b'L', b'D', b'U', b'R', b'L', b'U', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'L', b'L', b'D', b'R']
+=> 089 dan.xml(41) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+089 dan.xml(41) time:7  algo:l-1 tunn:1 depth:43 solution:[b'R', b'U', b'R', b'D', b'L', b'D', b'U', b'R', b'D', b'R', b'D', b'L', b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'D', b'L', b'D', b'R', b'D', b'L', b'D']
+=> 090 dan.xml(30) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+090 dan.xml(30) time:0  algo:l-1 tunn:1 depth:27 solution:[b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'U', b'R', b'U', b'R', b'L', b'D', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'R', b'U', b'D']
+=> 091 dan.xml(42) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+091 dan.xml(42) found solution at level 428 found:trueeesee
+091 dan.xml(42) time:3  algo:l-2 tunn:1 depth:37 solution:[b'R', b'U', b'R', b'D', b'U', b'R', b'U', b'D', b'L', b'U', b'D', b'R', b'U', b'D', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'D', b'D', b'L', b'D']
+=> 092 dan.xml(42) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+092 dan.xml(42) found solution at level 42076 found:truetrueee
+092 dan.xml(42) time:17  algo:l-4 tunn:1 depth:41 solution:[b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'R', b'U', b'L', b'U', b'L', b'D', b'R', b'D', b'R', b'D', b'R', b'U', b'L', b'D', b'L', b'D', b'L', b'D', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'R']
+=> 093 dan.xml(45) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+"093 dan.xml(45) solution not found !!!573 found:falseeee
+093 dan.xml(45) found solution at level 467 found:trueeseee
+093 dan.xml(45) time:4  algo:l-2 tunn:1 depth:43 solution:[b'R', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'U', b'R', b'D', b'U', b'R', b'D', b'L', b'U', b'D', b'L', b'D', b'U', b'R', b'U', b'R', b'D', b'R', b'U', b'L', b'U', b'D', b'L', b'R']
+=> 094 dan.xml(34) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+094 dan.xml(34) found solution at level 290 found:truetruee
+094 dan.xml(34) time:1  algo:l-2 tunn:1 depth:29 solution:[b'R', b'D', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'L', b'D', b'U', b'R', b'L', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'L']
+=> 095 dan.xml(25) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+095 dan.xml(25) time:0  algo:l-1 tunn:1 depth:21 solution:[b'U', b'R', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'U', b'U', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'L']
+=> 096 dan.xml(17) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+096 dan.xml(17) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'D']
+=> 097 dan.xml(30) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+097 dan.xml(30) time:0  algo:l-1 tunn:1 depth:26 solution:[b'U', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'U', b'L', b'D']
+=> 098 dan.xml(37) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+098 dan.xml(37) found solution at level 32 found:trueueee
+098 dan.xml(37) time:1  algo:l-2 tunn:1 depth:32 solution:[b'R', b'U', b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'L', b'U', b'D', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'U', b'L', b'U', b'D', b'L', b'U']
+=> 099 dan.xml(34) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+099 dan.xml(34) time:0  algo:l-1 tunn:1 depth:27 solution:[b'U', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'R', b'D', b'U', b'L', b'D', b'U', b'R', b'U', b'L', b'U', b'D', b'R', b'U', b'D', b'L', b'U', b'L']
+=> 100.xml(49) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+100.xml(49) found solution at level 534742891 found:trueueeeee
+100.xml(49) time:32  algo:l-2 tunn:1 depth:53 solution:[b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'U', b'L', b'R', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'U', b'L', b'D', b'R', b'D']
+=> 101.xml(34) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+101.xml(34) found solution at level 311306850 found:true:true
+101.xml(34) time:11  algo:l-4 tunn:1 depth:31 solution:[b'R', b'U', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'U', b'L', b'D', b'R', b'U', b'R', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'U', b'D', b'L']
+=> 102.xml(27) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+102.xml(27) time:1  algo:l-1 tunn:1 depth:25 solution:[b'U', b'R', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'L', b'R', b'U', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'L']
+=> 103.xml(41) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+103.xml(41) found solution at level 363613338 found:true:truee
+103.xml(41) time:30  algo:l-4 tunn:1 depth:36 solution:[b'U', b'R', b'U', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'U', b'L', b'D', b'U', b'L', b'U', b'D', b'R', b'U', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'U', b'L', b'D', b'R']
+=> 104.xml(48) level:l-5 base_comp:9 act_complex:9 algo:bfs_multi tunn:deep no_count:0
+104.xml(48) found solution at level 5012752671 found:trueeeeeeee
+104.xml(48) time:92  algo:l-5 tunn:2 depth:27 solution:[b'U', b'U', b'L', b'D', b'R', b'R', b'U', b'D', b'R', b'L', b'R', b'D', b'L', b'L', b'L', b'U', b'L', b'U', b'L', b'D', b'L', b'U', b'D', b'L', b'R', b'U', b'R']
+=> 105.xml(22) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+105.xml(22) time:0  algo:l-1 tunn:1 depth:21 solution:[b'U', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'R', b'U', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'L']
+=> 106.xml(35) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+106.xml(35) time:0  algo:l-1 tunn:1 depth:29 solution:[b'R', b'R', b'U', b'L', b'D', b'U', b'R', b'U', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'L', b'U', b'R', b'D', b'L', b'U', b'D', b'R', b'D', b'L', b'D', b'L', b'D']
+=> 107 dan.xml(23) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+107 dan.xml(23) time:0  algo:l-1 tunn:1 depth:22 solution:[b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'R', b'U', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'R', b'D', b'R', b'D']
+=> 108 dan.xml(45) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+108 dan.xml(45) found solution at level 4260807 found:truetrueee
+108 dan.xml(45) time:122  algo:l-4 tunn:1 depth:41 solution:[b'U', b'R', b'U', b'D', b'L', b'R', b'U', b'U', b'L', b'R', b'U', b'L', b'R', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'U', b'L', b'D', b'R', b'L', b'D', b'R', b'D', b'U', b'L']
+=> 109 dan.xml(37) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+109 dan.xml(37) time:2  algo:l-1 tunn:1 depth:31 solution:[b'R', b'U', b'R', b'L', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'L', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'U', b'R', b'L', b'D', b'L', b'D', b'R', b'L', b'U', b'L', b'D']
+=> 110 dan.xml(28) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+110 dan.xml(28) time:0  algo:l-1 tunn:1 depth:25 solution:[b'R', b'U', b'L', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'L', b'D', b'U', b'R', b'D', b'U', b'L', b'D', b'R', b'U', b'L', b'R', b'D', b'D', b'L']
+=> 111 dan.xml(45) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+111 dan.xml(45) found solution at level 40522 found:truetrueee
+111 dan.xml(45) time:39  algo:l-4 tunn:1 depth:39 solution:[b'R', b'L', b'U', b'U', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'R', b'U', b'R', b'U', b'R', b'D', b'U', b'L', b'U', b'R', b'L', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'D', b'R', b'D', b'L', b'U', b'L', b'U']
+=> 112 dan.xml(41) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+112 dan.xml(41) time:4  algo:l-1 tunn:1 depth:39 solution:[b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'R', b'L', b'D', b'R', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'D', b'L', b'U', b'R', b'D', b'L', b'D', b'R', b'L', b'U', b'R', b'D', b'R', b'L', b'D', b'U', b'R', b'D', b'L', b'D']
+=> 113 dan.xml(34) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+113 dan.xml(34) time:0  algo:l-1 tunn:1 depth:31 solution:[b'R', b'D', b'R', b'R', b'U', b'L', b'D', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'R', b'U', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'U', b'R', b'R', b'D', b'L', b'U']
+=> 114 dan.xml(38) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+114 dan.xml(38) time:0  algo:l-1 tunn:1 depth:32 solution:[b'R', b'U', b'R', b'L', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'U', b'L', b'U', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'D', b'R', b'D', b'L', b'D', b'U']
+=> 115 dan.xml(18) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+115 dan.xml(18) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'U', b'L', b'R', b'U', b'R', b'L', b'D', b'L', b'D']
+=> 116 dan.xml(25) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+116 dan.xml(25) time:0  algo:l-1 tunn:1 depth:25 solution:[b'R', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'U', b'L', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'R', b'U']
+=> 117 dan.xml(17) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+117 dan.xml(17) time:0  algo:l-1 tunn:1 depth:15 solution:[b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'U', b'L', b'D', b'L', b'R', b'D']
+=> 118 dan.xml(36) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+118 dan.xml(36) time:0  algo:l-1 tunn:1 depth:31 solution:[b'U', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'D']
+=> 119 dan.xml(32) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+119 dan.xml(32) time:1  algo:l-1 tunn:1 depth:29 solution:[b'U', b'D', b'R', b'U', b'L', b'R', b'U', b'D', b'L', b'U', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'R', b'U', b'D']
+=> 120 dan.xml(38) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+120 dan.xml(38) time:0  algo:l-1 tunn:1 depth:32 solution:[b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'D', b'L', b'R', b'U', b'R', b'L', b'D', b'R', b'L', b'D']
+=> 121 dan.xml(45) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+121 dan.xml(45) time:1  algo:l-1 tunn:1 depth:43 solution:[b'R', b'U', b'R', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'U', b'D', b'L', b'D', b'L', b'D', b'U', b'R', b'U', b'R', b'U', b'L', b'D', b'R', b'L', b'U', b'R', b'D', b'L', b'U', b'D', b'L', b'D']
+=> 122 dan.xml(36) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+122 dan.xml(36) time:0  algo:l-1 tunn:1 depth:26 solution:[b'U', b'D', b'L', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'U', b'R', b'L', b'D', b'R', b'L', b'U', b'D', b'L', b'U']
+=> 123 dan.xml(34) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+123 dan.xml(34) time:0  algo:l-1 tunn:1 depth:35 solution:[b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'R', b'L', b'D', b'R', b'U', b'R', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'D', b'L', b'U', b'D', b'R']
+=> 124 dan.xml(48) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+124 dan.xml(48) found solution at level 47509 found:truetruee
+124 dan.xml(48) time:12  algo:l-4 tunn:1 depth:45 solution:[b'R', b'U', b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'R', b'D', b'R', b'L', b'D', b'R', b'D', b'R', b'D', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'L', b'D', b'L', b'R', b'U', b'L', b'D', b'R', b'U']
+=> 125 dan.xml(50) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+"125 dan.xml(50) solution not found !!!610 found:falseeee
+"125 dan.xml(50) solution not found !!!616 found:falseeee
+125 dan.xml(50) found solution at level 491 found:trueueeee
+125 dan.xml(50) time:7  algo:l-2 tunn:1 depth:48 solution:[b'U', b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'D', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'D', b'L', b'D', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'D', b'R', b'D', b'R', b'D', b'L', b'R', b'U', b'L']
+=> 126 dan.xml(51) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+"126 dan.xml(51) solution not found !!!180 found:falseeee
+"126 dan.xml(51) solution not found !!!939 found:falseeee
+"126 dan.xml(51) solution not found !!!9873 found:falseeee
+"126 dan.xml(51) solution not found !!!5460 found:falseeeee
+126 dan.xml(51) found solution at level 548 found:trueuesee
+126 dan.xml(51) time:15  algo:l-2 tunn:1 depth:48 solution:[b'R', b'D', b'R', b'U', b'L', b'R', b'U', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'D', b'L', b'D', b'U', b'R', b'D', b'L']
+=> 127 dan.xml(62) level:l-6 base_comp:10 act_complex:10 algo:bfs_multi tunn:deep no_count:1
+127 dan.xml(62) found solution at level 64375 found:trueeeeeee
+127 dan.xml(62) time:56  algo:l-6 tunn:2 depth:29 solution:[b'R', b'L', b'R', b'L', b'L', b'U', b'R', b'D', b'D', b'L', b'U', b'L', b'R', b'L', b'D', b'L', b'D', b'L', b'U', b'U', b'U', b'U', b'L', b'D', b'D', b'U', b'U', b'R', b'R']
+=> 128 dan.xml(59) level:l-4 base_comp:8 act_complex:8 algo:bfs_multi tunn:soft no_count:3
+128 dan.xml(59) found solution at level 52741 found:true:truee
+128 dan.xml(59) time:53  algo:l-4 tunn:1 depth:48 solution:[b'U', b'R', b'U', b'R', b'D', b'R', b'D', b'R', b'D', b'L', b'U', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'U', b'D', b'L', b'R', b'U', b'R', b'L', b'U', b'D', b'R', b'L', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'D', b'R', b'U', b'D', b'L']
+=> 129 dan.xml(79) level:l-7 base_comp:13 act_complex:13 algo:dfs tunn:deep no_count:1
+time 294.98372197151184 | count:21 | act_proc:7 | best depth:133 | hashes:965514 | best 133129 dan.xml(79) time:295  algo:l-7 tunn:2 depth:60 solution:[b'U', b'D', b'U', b'D', b'U', b'D', b'R', b'D', b'U', b'U', b'R', b'U', b'D', b'D', b'D', b'D', b'U', b'U', b'D', b'D', b'R', b'U', b'D', b'D', b'L', b'D', b'D', b'L', b'L', b'U', b'R', b'D', b'D', b'U', b'L', b'L', b'L', b'D', b'R', b'R', b'D', b'U', b'D', b'U', b'R', b'U', b'R', b'U', b'R', b'U', b'R', b'U', b'R', b'U', b'U', b'U', b'R', b'U', b'L', b'R']
+=> 130 dan.xml(40) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+130 dan.xml(40) time:0  algo:l-1 tunn:1 depth:38 solution:[b'U', b'D', b'L', b'U', b'R', b'U', b'R', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'D', b'L', b'U', b'R', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'R', b'U', b'L']
+=> 131 dan.xml(28) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+131 dan.xml(28) time:0  algo:l-1 tunn:1 depth:24 solution:[b'U', b'R', b'D', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'D', b'L', b'L']
+=> 132 dan.xml(36) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+132 dan.xml(36) time:0  algo:l-1 tunn:1 depth:32 solution:[b'U', b'D', b'R', b'U', b'R', b'D', b'L', b'R', b'D', b'L', b'U', b'R', b'U', b'R', b'U', b'L', b'U', b'R', b'D', b'R', b'U', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'U', b'L']
+=> 133 dan.xml(34) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+133 dan.xml(34) time:0  algo:l-1 tunn:1 depth:31 solution:[b'R', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'D', b'L', b'D', b'L', b'D', b'U', b'U', b'R', b'U', b'L', b'D', b'R']
+=> 134 dan.xml(38) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+134 dan.xml(38) time:0  algo:l-1 tunn:1 depth:37 solution:[b'R', b'L', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'D', b'R', b'U', b'L', b'U', b'R']
+=> 135.xml(27) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+135.xml(27) time:0  algo:l-1 tunn:1 depth:23 solution:[b'U', b'R', b'D', b'R', b'D', b'L', b'U', b'L', b'R', b'D', b'R', b'U', b'L', b'R', b'U', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'R']
+=> 136.xml(22) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+136.xml(22) time:0  algo:l-1 tunn:1 depth:21 solution:[b'R', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'D', b'L', b'D', b'U', b'R', b'U', b'D']
+=> 137.xml(29) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+137.xml(29) time:0  algo:l-1 tunn:1 depth:23 solution:[b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'D', b'L']
+=> 138.xml(32) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+138.xml(32) found solution at level 2570410 found:truetruee
+138.xml(32) time:4  algo:l-4 tunn:1 depth:25 solution:[b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'U', b'L', b'D', b'R', b'U']
+=> 139.xml(37) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+139.xml(37) found solution at level 3042023 found:trueruese
+139.xml(37) time:2  algo:l-4 tunn:1 depth:29 solution:[b'U', b'R', b'D', b'R', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'L', b'R', b'D', b'L', b'D', b'R', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'U']
+=> 140.xml(17) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+140.xml(17) time:0  algo:l-1 tunn:1 depth:18 solution:[b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'R', b'D']
+=> 141.xml(36) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+141.xml(36) found solution at level 312099050 found:true:truee
+141.xml(36) time:19  algo:l-4 tunn:1 depth:31 solution:[b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'R', b'U', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'U', b'L', b'U', b'L', b'R', b'D', b'L', b'U']
+=> 142.xml(29) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+142.xml(29) time:0  algo:l-1 tunn:1 depth:22 solution:[b'U', b'R', b'D', b'R', b'L', b'D', b'L', b'D', b'U', b'L', b'D', b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'R', b'U', b'L', b'R']
+=> 143.xml(38) level:l-4 base_comp:8 act_complex:8 algo:bfs_multi tunn:soft no_count:3
+143.xml(38) found solution at level 34:17983166 found:trued:truee
+143.xml(38) time:188  algo:l-4 tunn:1 depth:34 solution:[b'U', b'R', b'U', b'L', b'U', b'R', b'L', b'D', b'L', b'R', b'U', b'R', b'U', b'D', b'L', b'R', b'U', b'L', b'R', b'U', b'D', b'L', b'U', b'R', b'L', b'D', b'R', b'U', b'D', b'R', b'D', b'U', b'L', b'D']
+=> 144.xml(40) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+144.xml(40) found solution at level 3314889 found:truetruee
+144.xml(40) time:6  algo:l-4 tunn:1 depth:30 solution:[b'U', b'D', b'R', b'D', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'R', b'D', b'L', b'R', b'D', b'U', b'L', b'U', b'L', b'D', b'R', b'U', b'L', b'U', b'L', b'R', b'D', b'L']
+=> 145 dan.xml(35) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+145 dan.xml(35) time:2  algo:l-1 tunn:1 depth:33 solution:[b'U', b'R', b'D', b'R', b'D', b'L', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'U', b'R', b'D', b'R', b'U', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'U', b'L', b'D', b'R', b'D', b'R']
+=> 146 dan.xml(39) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+"146 dan.xml(39) solution not found !!!4856 found:falseeee
+146 dan.xml(39) found solution at level 351 found:truetruee
+146 dan.xml(39) time:7  algo:l-2 tunn:1 depth:35 solution:[b'U', b'R', b'U', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'R', b'D', b'R', b'L', b'D', b'L', b'U']
+=> 147 dan.xml(32) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+147 dan.xml(32) time:0  algo:l-1 tunn:1 depth:29 solution:[b'U', b'D', b'R', b'U', b'R', b'D', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'L']
+=> 148 dan.xml(44) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+148 dan.xml(44) found solution at level 44307 found:truetruee
+148 dan.xml(44) time:11  algo:l-4 tunn:1 depth:44 solution:[b'R', b'L', b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'U', b'R', b'U', b'L', b'R', b'D', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'U', b'D', b'R', b'L', b'U', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'R']
+=> 149 dan.xml(35) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+149 dan.xml(35) time:36  algo:l-1 tunn:1 depth:33 solution:[b'R', b'L', b'U', b'R', b'U', b'R', b'D', b'R', b'D', b'L', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'R', b'U', b'R', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'D', b'L', b'U', b'L', b'D', b'R']
+=> 150 dan.xml(44) level:l-4 base_comp:7 act_complex:7 algo:bfs_multi tunn:soft no_count:3
+150 dan.xml(44) found solution at level 42471 found:truerueese
+150 dan.xml(44) time:25  algo:l-4 tunn:1 depth:40 solution:[b'R', b'L', b'U', b'R', b'D', b'R', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'R', b'U', b'R', b'D', b'R', b'D', b'R', b'L', b'U', b'R', b'D', b'L', b'U', b'L', b'R', b'U', b'L', b'D', b'R', b'L', b'D', b'L', b'U', b'R', b'L', b'D']
+=> 151 dan.xml(27) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+151 dan.xml(27) time:0  algo:l-1 tunn:1 depth:26 solution:[b'R', b'U', b'L', b'D', b'L', b'R', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'D', b'R']
+=> 152 dan.xml(32) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+152 dan.xml(32) time:0  algo:l-1 tunn:1 depth:30 solution:[b'U', b'R', b'D', b'R', b'D', b'L', b'R', b'D', b'U', b'R', b'U', b'L', b'U', b'D', b'L', b'U', b'R', b'U', b'R', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'D']
+=> 153 dan.xml(47) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+"153 dan.xml(47) solution not found !!!0201 found:falseeee
+153 dan.xml(47) found solution at level 536 found:trueeseee
+153 dan.xml(47) time:11  algo:l-2 tunn:1 depth:52 solution:[b'U', b'R', b'L', b'D', b'R', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'R', b'D', b'R', b'D', b'U', b'L', b'D', b'U', b'L', b'U', b'R', b'U', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'U', b'R', b'U', b'R', b'D', b'L', b'D', b'R', b'L', b'D', b'R', b'U', b'L']
+=> 154 dan.xml(40) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+154 dan.xml(40) time:1  algo:l-1 tunn:1 depth:36 solution:[b'R', b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'D', b'L', b'U', b'D']
+=> 155 dan.xml(40) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+155 dan.xml(40) time:11  algo:l-1 tunn:1 depth:39 solution:[b'U', b'U', b'L', b'R', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'L', b'U', b'L', b'R', b'U', b'L', b'D', b'R']
+=> 156 dan.xml(28) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+156 dan.xml(28) time:0  algo:l-1 tunn:1 depth:28 solution:[b'U', b'R', b'D', b'R', b'D', b'L', b'U', b'L', b'U', b'R', b'D', b'R', b'L', b'U', b'L', b'D', b'L', b'R', b'U', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'L', b'U']
+=> 157 dan.xml(44) level:l-2 base_comp:6 act_complex:6 algo:bfs_multi tunn:soft no_count:1
+"157 dan.xml(44) solution not found !!!7297 found:falseeeee
+157 dan.xml(44) found solution at level 4075 found:trueruee
+157 dan.xml(44) time:13  algo:l-2 tunn:1 depth:39 solution:[b'U', b'R', b'U', b'R', b'U', b'D', b'R', b'U', b'L', b'D', b'R', b'L', b'U', b'L', b'U', b'L', b'D', b'L', b'D', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'R', b'U', b'L', b'D', b'L', b'U', b'D', b'L', b'U']
+=> 158 dan.xml(34) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+158 dan.xml(34) time:0  algo:l-1 tunn:1 depth:32 solution:[b'R', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'U', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'U', b'L', b'D', b'L', b'R', b'D', b'L', b'U']
+=> 159 dan.xml(46) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+159 dan.xml(46) time:21  algo:l-1 tunn:1 depth:42 solution:[b'U', b'R', b'L', b'D', b'R', b'U', b'L', b'R', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'L', b'D', b'R', b'D', b'R', b'U', b'L', b'R', b'U', b'U', b'L', b'U', b'D', b'R', b'D', b'L']
+=> 160 dan.xml(20) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+160 dan.xml(20) time:0  algo:l-1 tunn:1 depth:19 solution:[b'U', b'R', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'R', b'U', b'D', b'L', b'U', b'L', b'D', b'R', b'U', b'L']
+=> 161 dan.xml(19) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+161 dan.xml(19) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'D', b'L', b'R', b'D', b'L', b'U', b'R', b'D', b'R', b'U']
+=> 162 dan.xml(28) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+162 dan.xml(28) time:0  algo:l-1 tunn:1 depth:27 solution:[b'R', b'L', b'U', b'R', b'D', b'L', b'R', b'D', b'R', b'D', b'R', b'U', b'L', b'U', b'L', b'R', b'D', b'L', b'D', b'R', b'U', b'D', b'L', b'U', b'R', b'U', b'R']
+=> 163 dan.xml(33) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+163 dan.xml(33) time:0  algo:l-1 tunn:1 depth:28 solution:[b'U', b'R', b'L', b'D', b'R', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'D', b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'D', b'L', b'U', b'L', b'D', b'R', b'D', b'L']
+=> 164 dan.xml(22) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+164 dan.xml(22) time:0  algo:l-1 tunn:1 depth:19 solution:[b'U', b'R', b'U', b'R', b'L', b'U', b'D', b'L', b'R', b'U', b'R', b'U', b'L', b'R', b'D', b'L', b'U', b'R', b'D']
+=> 165 dan.xml(36) level:l-1 base_comp:4 act_complex:4 algo:bfs tunn:soft no_count:-1
+165 dan.xml(36) time:0  algo:l-1 tunn:1 depth:34 solution:[b'R', b'U', b'R', b'U', b'L', b'D', b'L', b'D', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'U', b'U', b'L', b'D', b'R', b'U', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'L', b'U']
+=> 166 dan.xml(44) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+166 dan.xml(44) time:1  algo:l-1 tunn:1 depth:39 solution:[b'U', b'D', b'R', b'U', b'R', b'D', b'R', b'U', b'L', b'U', b'R', b'D', b'L', b'U', b'R', b'U', b'R', b'D', b'L', b'D', b'L', b'U', b'R', b'D', b'L', b'R', b'U', b'L', b'D', b'R', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'L', b'U']
+=> 167 dan.xml(49) level:l-1 base_comp:5 act_complex:5 algo:bfs tunn:soft no_count:-1
+167 dan.xml(49) time:43  algo:l-1 tunn:1 depth:46 solution:[b'R', b'L', b'U', b'R', b'U', b'R', b'D', b'R', b'D', b'L', b'D', b'U', b'R', b'U', b'L', b'U', b'R', b'L', b'D', b'L', b'U', b'D', b'L', b'D', b'U', b'L', b'D', b'R', b'D', b'L', b'U', b'R', b'D', b'U', b'L', b'D', b'R', b'D', b'R', b'U', b'R', b'D', b'L', b'U', b'R', b'D']
+=> 168 dan.xml(18) level:l-1 base_comp:2 act_complex:2 algo:bfs tunn:soft no_count:-1
+168 dan.xml(18) time:0  algo:l-1 tunn:1 depth:19 solution:[b'R', b'U', b'L', b'U', b'D', b'L', b'U', b'R', b'U', b'L', b'R', b'U', b'L', b'D', b'U', b'R', b'D', b'L', b'D']
+=> 169 dan.xml(19) level:l-1 base_comp:3 act_complex:3 algo:bfs tunn:soft no_count:-1
+169 dan.xml(19) time:0  algo:l-1 tunn:1 depth:17 solution:[b'R', b'L', b'U', b'R', b'U', b'L', b'D', b'L', b'R', b'D', b'L', b'D', b'R', b'U', b'R', b'L', b'D']
+=> 170 dan.xml(61) level:l-6 base_comp:10 act_complex:10 algo:bfs_multi tunn:deep no_count:1
+170 dan.xml(61) found solution at level 582 found:trueueeee
+170 dan.xml(61) time:4  algo:l-6 tunn:2 depth:26 solution:[b'U', b'L', b'D', b'L', b'D', b'R', b'L', b'D', b'D', b'L', b'U', b'D', b'U', b'R', b'L', b'D', b'R', b'R', b'U', b'U', b'D', b'R', b'R', b'U', b'L', b'L']
+001.xml,0,1,3,2,4
+002.xml,0,3,1,4,2,3
+003.xml,0,1,3,2,4,1,3,4
+004.xml,0,1,3,2,3,1,4,2,3,1,4,2,4
+005.xml,0,1,3,2,3,1,3,1,4,2,3,2
+006.xml,0,1,3,2,3,1,3,4,1,4,2,3,1,3,2,3,1,4
+007.xml,0,1,3,2,4,2,3,1,3,4,2
+008.xml,0,1,3,1,4,2,3,1
+009.xml,0,3,1,4,1,3,2,4,3,2,4,2,3,1,4,2,1,3,4
+010.xml,0,3,1,2,4,1,3,1,4,2,3,2,4
+011.xml,0,1,3,2,4,1,3,2,4,1,3,2,4
+012.xml,0,3,4,1,3,2,3,1,3,1,3,2,4,2,1
+013.xml,0,1,3,2,4,2,3,2,4
+014.xml,0,3,1,4,2,3,1,4,2
+015.xml,0,3,1,3,2,4,1,3,1,4,2,3,4,1,4,2
+016.xml,0,3,1,4,3,1,2,4,1,4,2,3,4,1,3,2
+017.xml,0,1,3,2,3,1,3,2,4,2,4,1,4,2,3,1,3,2,3,1,4,1,4,2,4
+018.xml,0,1,3,2,3,1,3,2,4,3,1,4,1,3,2,1,4,2,3,4,2,3,4,1,3
+019.xml,0,3,4,1,3,2,4,3,1,3,2,3,2,4,2,1,4,2
+020.xml,0,1,3,1,3,2,3,2,4,1,4,3,2,3,1,3,1,3,2,3,1,2,4,1,4,1,2,3,4,1,2,3,4
+021.xml,0,1,4,3,2,3,1,4,2,3,2,3,1,3,2,4
+022.xml,0,1,3,2,4,1,2,4,3,1,3,2,3,2,4,1,3,1,2,4
+023.xml,0,1,3,2,4,2,4,2,3,1,4,1,4
+024.xml,0,3,1,3,2,4,1,3,1,4,2,3
+025.xml,0,1,2,3,1,3,2,3,1,4,1,2,3,1,4
+026.xml,0,1,3,2,4,1,4,2,1,3,2,4,3,2
+027.xml,0,3,1,2,4,1,3,1,4,3,2,4,2,3,2,3,1,4,1
+028.xml,0,1,3,2,4,2,4,3,1,4,1
+029.xml,0,3,1,4,2,3,1,4,2
+030.xml,1,3,1,4,1,4,3,2,4,1,4,2,4,1,3,4,2,3,4,1,3,1,4,3,2,4
+031.xml,0,3,1,3,2,1,4,2,1,4,2,3,4,2,3,1,3,1,4,2
+032.xml,0,1,3,1,4,1,2,3,1,4,2,3
+033.xml,0,1,2,3,1,4,3,2,3,1,4,2
+034.xml,0,1,3,2,4,3,1,4,1,3,2,4,1,4,2,3
+035.xml,0,1,3,4,2,3,1,3,4,2,3,2,4,1,4,3,2,1,4,2,4
+036.xml,0,3,1,4,2,1,3,2,4,1,4,2,1,3,2,4,2,3
+037.xml,0,1,3,2,3,1,3,2,3,1,3,2,4,1,3,1,4,2
+038.xml,1,1,2,3,1,3,2,1,4,2,4,1,4,2,3,2,1,3,2,3,1,3,2,4,1,4,2
+039.xml,0,1,2,3,1,4,3,1,4,2,1,3,2,3,4,1,3,1,3,2,1,4,2
+040.xml,0,1,3,2,4,3,1,4,2,3,4,1,3,4,2,3,1,3
+041.xml,0,3,1,3,4,1,3,2,4,3,2,4,3,1,3,1,4,2,1,3,4
+042.xml,0,1,3,2,4,1,3,4,2,3,1,4,2,4,3,1,3,4,2,3,1
+043.xml,0,1,4,1,3,4,2,3,2,1,3,2,4,3,1,3,1,4,2,4
+044.xml,0,1,2,3,1,3,2,3,4,1,4,3,1,4,2,3,2,3,1,2,4,1,4,1,4,2,3
+045.xml,0,3,1,4,2,3,1,4,2,3,1,4,2
+046.xml,0,3,1,4,1,3,2,4,1,3,2,1,4,2,3,1,3,4,2,3
+047.xml,0,3,1,4,1,3,1,4,1,3,1,4,1,3,1,4,1,3,1
+048.xml,0,1,3,2,3,1,4,2,3,2,4,1,4,3,2,4,2,4,1,3,1,4,1,3,2,3,1,4,2,4,1,2,4,1,3
+049.xml,0,3,1,4,1,3,1,4,2,3,2,4,1,4,2,4,1,3,2,4,1,3,2
+050.xml,0,1,3,2,4,2,4,1,3,1,4,2,4,2,3,1,3,2,1,4,2,4,2,3,4,1
+051.xml,15,1,3,1,3,4,2,4,3,1,3,1,2,4,1,3,4,2,3,1,4,2,1,4,1,4,2,3,1,3,1,4,3,2
+052.xml,0,1,3,2,4,2,3,1,3,2,3,2,3,4,1,4,1,3,2,3,1,4,1,4
+053.xml,0,1,3,2,3,1,3,2,3,1,3,2,3,1,4,2,4,1,4,2,4,1,4,2,4,1
+054.xml,1,3,4,1,3,1,4,3,2,4,2,1,3,1,4,3,2,4,2,4,1,3,4,1,3,1,3,2,3,1,4,1
+055.xml,1,1,3,1,4,3,1,2,4,1,2,4,2,4,2,4,1,2,3,1,3,1,4,1,4,2,1,4,2,4,2,3,1,3,1,2,3,1,4,2,3,1,2,3,2,1,4,2
+056.xml,47,1,3,2,4,1,4,2,3,2,1,3,1,4,2,3,2,3,1,4,2,4,3,1,4,1,4,3,2,4,1,4,1
+057.xml,1,1,3,1,3,2,4,2,4,3,1,4,3,2,4,1,4,2,1,3,2,3,1,3,2,4,1,3,2,1,3,1,2,4,1,4,1,3,1,4,1,3,2,1,4,2,4,2,4,1,3,2,4,1,4,2,3,2,4,1
+058.xml,172,1,4,1,2,3,1,4,2,1,4,2,4,2,1,3,2,3,1,2,4,1,4,1,3,2,1,4,2,3,2,4,1,3,1,4,2,4,1,4,2,4,1,3,1,4,1,4,2,4,2,3,4,2,3,1,4,3,2,4,3,1,4,3,2,4,1,3,2,4,1,2,3,2,3,1
+059.xml,0,3,1,2,4,1,4,2,4,1,3,1,4,2,1,3,1,3,2,4,1,4,2,3,2,3,2,4,1
+060.xml,0,1,4,2,1,4,1,3,2,4,2,3,1,3,2,4,1,3,2,4,1,3,2,4,2,3
+061.xml,1,1,2,3,1,3,1,4,1,4,1,4,2,3,2,4,1,3,2,1,4,3,1,4,2,3,1,4
+062.xml,62,3,4,1,3,1,4,1,3,2,3,1,3,1,4,2,4,1,4,1,4,2,1,3,2,4,3,2,1,4,1,2,4,1,3,1
+063.xml,0,3,1,4,3,2,3,1,4,1,4,1,2,3,1,4,3,2,3,1,3,2,4,1,3,2,3,1,2,4
+064.xml,12,3,1,4,1,4,1,3,2,3,4,1,4,2,4,1,3,4,1,3,2,3,1,3,4,2,4,1,4,3,2,4,2
+065 dan.xml,0,1,2,3,1,3,1,3,1,4,2,3,2,4,3,1,4,3,1,2,4,2,3,1,3,2,4,1,3,4
+066 dan.xml,0,1,2,3,1,4,2,1,4,3,2,4,1,3,2,1,4,2,3
+067 dan.xml,0,3,1,4,2,3,2,4,1,3,1,4,2,4,1,3,1,3,2,3,1,2,4,1,2,3
+068 dan.xml,0,1,3,2,4,3,1,4,1,3,2,1,4,2,3,1,4
+069 dan.xml,1,1,3,1,4,1,3,2,3,2,3,2,4,3,1,4,2,4,1,3,2,4,2,3,1,3,2,1,4,3,2,1,4,1,2,3,2,4
+070 dan.xml,0,3,1,4,1,3,1,4,2,3,1,4,3,2,4,2,4,1,3,1
+071 dan.xml,0,3,1,3,1,4,2,3,2,3,1,4,1,3,1,4,1,4,2,4,1,3,1,4,1,3,4,2,3,1,2,4,1,4,1,3,2,4,2,4,2,1,3,2
+072 dan.xml,0,3,1,4,2,3,1,4,2,4,1,3,1,4,3,2,4,1,4,2
+073 dan.xml,0,3,1,3,2,3,1,4,1,4,3,2,4,1,4,2,1,3,2,3,1,4,1,4,2,4,2,1,3,2,3
+074 dan.xml,0,1,3,4,2,3,1,3,2,3,1,4,1,4,2,3,1,3
+075 dan.xml,0,3,1,3,2,3,1,3,2,4,1,4,2,3,1,4,2,3
+076 dan.xml,0,1,3,2,4,3,1,4,1,3,2,3,1,3,1,2,4,2,1,4,1,2,3,1,4
+077 dan.xml,0,1,2,3,1,4,2,3,1,3,2,1,4,2
+078 dan.xml,0,3,1,2,4,1,3,2,3,2,4,1,3,1,4,2,3,2,3,1,4,2
+079 dan.xml,0,3,1,4,1,3,2,4,2,4,1,3,1,4,3,2,4,3,1,4,2,4,1,3,4,2,3,2,4,1,4
+080 dan.xml,0,1,3,1,2,4,2,3,1,4,1,4,1,3,2,3,2,3,1,4,2,3,2,4,1,4,1,3,2,4,1
+081 dan.xml,0,1,3,1,3,1,3,2,4,1,3,1,4,2,3,1,4,1,3,2,3,2,4
+082 dan.xml,0,3,4,1,4,1,3,2,4,1,4,3,1,3,4,2,4,2,4,1,4,2,3,1,3,2,3,2,4,2,1,4,2,1,3
+083 dan.xml,0,3,1,4,1,4,2,1,3,2,3,2,4,2,1
+084 dan.xml,0,3,1,2,4,1,3,2,4,1,2,3,2,4,3,1,4,2,1,4,2,4,2,1,3,2
+085 dan.xml,0,3,1,4,1,4,1,4,1,3,2,4,2,3,2,4,2,4,2,1,3,2,4,2,3,1,4,1,3,4,1,3,2,4,1,4,2,3
+086 dan.xml,0,1,3,1,3,2,4,3,2,4,2,4,3,1,4,2,4,1,3,2,4,2,3,1,4,2,4,3,2,4
+087 dan.xml,0,1,3,1,4,1,3,2,3,4,1,3,2,4,2,3,1,3,2,3,2,4,3,1,4,1,4,2,4,2,4,2,4
+088 dan.xml,0,1,2,3,1,3,1,3,4,2,3,2,4,1,3,1,2,3,1,4,1,3,1,4,2,3,2,4,1,4,2,3,2,4,2,3,2,4,1
+089 dan.xml,7,1,3,1,4,2,4,3,1,4,1,4,2,1,3,1,3,2,4,3,2,4,2,3,1,4,1,3,2,1,4,2,3,1,3,2,3,1,4,2,4,1,4,2,4
+090 dan.xml,0,3,1,4,2,4,1,3,2,3,1,3,1,3,2,4,2,4,1,3,1,3,2,4,1,4,1,3,2,4
+091 dan.xml,3,1,3,1,4,3,1,3,2,4,2,3,2,4,1,4,1,3,4,2,4,3,1,4,1,3,4,2,3,1,3,4,2,1,3,2,4,2,4,1,4,2,4
+092 dan.xml,17,3,1,4,2,1,3,2,1,3,2,3,2,4,1,4,1,4,1,3,2,4,2,4,2,4,1,3,1,4,2,3,1,4,2,1,3,2,1,4,2,3,1
+093 dan.xml,4,1,3,1,3,2,4,1,3,2,4,2,3,1,3,2,3,1,4,3,2,4,3,1,4,3,1,4,2,3,4,2,4,3,1,3,1,4,1,3,2,3,1,4,2,3,1
+094 dan.xml,1,1,4,3,2,4,3,1,4,1,2,4,3,1,2,3,1,4,1,3,1,4,1,3,1,4,3,2,4,2
+095 dan.xml,0,3,1,3,2,4,2,4,3,1,3,1,4,2,4,2,3,1,3,1,4,3,2,4,2,4,2
+096 dan.xml,0,1,4,1,3,4,2,3,1,4,1,3,1,4,2,3,2,4
+097 dan.xml,0,3,1,3,2,4,2,3,1,4,1,3,2,4,1,4,2,3,1,4,2,3,2,4,2,3,2,4
+098 dan.xml,1,1,3,1,4,1,3,4,2,3,2,3,4,1,3,2,3,1,3,2,3,1,4,2,3,1,4,3,2,3,4,2,3
+099 dan.xml,0,3,1,3,2,3,1,3,2,4,2,1,4,3,2,4,3,1,3,2,4,3,1,4,1,3,4,2,3,2,3,1,4,2
+100.xml,32,3,1,4,1,3,1,4,2,3,1,4,2,3,1,3,2,4,2,4,3,1,3,2,1,4,1,3,2,1,4,2,3,4,1,4,2,4,1,3,2,1,4,2,3,2,4,1,4,3,2,4,1,4
+101.xml,11,1,3,1,4,2,3,4,1,3,2,3,2,4,1,3,1,2,4,1,3,1,3,2,4,3,1,4,2,3,4,2
+102.xml,1,3,1,3,2,4,2,4,3,1,4,1,3,2,4,2,1,3,2,3,2,4,3,1,4,2
+103.xml,30,3,1,3,4,1,3,1,4,3,2,3,2,4,3,2,3,4,1,3,2,4,1,3,4,2,3,1,4,2,1,3,2,3,2,4,1
+104.xml,92,3,1,3,2,3,4,1,3,1,2,4,1,4,3,2,4,1,3,2,1,3,2,4,2,3,2,4,1,2,3,1,3,2,4,3,1,4,2,3,1,4,2,3,4,2,1,3,1,3
+105.xml,0,3,1,4,2,3,4,1,3,2,1,3,1,4,1,4,3,2,4,2,3,2
+106.xml,0,1,4,1,3,2,3,2,4,2,4,3,1,3,1,3,1,4,2,3,2,4,1,2,3,1,4,2,3,4,1,4,2,4,2,4
+107 dan.xml,0,3,1,4,2,3,1,3,1,3,2,4,1,4,2,1,3,2,4,2,3,1,4,1,4
+108 dan.xml,122,3,1,3,4,2,1,3,2,3,2,1,3,2,1,4,1,3,2,4,2,3,2,3,1,4,1,4,3,2,4,2,4,3,2,4,1,2,4,1,4,3,2
+109 dan.xml,2,1,3,1,4,2,3,1,4,2,4,1,3,4,2,4,2,3,4,1,3,1,3,2,3,1,2,4,2,4,1,2,3,2,4,2,4
+110 dan.xml,0,1,3,2,1,3,2,3,1,4,1,2,4,3,1,4,3,2,4,1,3,2,1,4,1,4,2,4,2
+111 dan.xml,39,1,2,3,1,3,2,3,1,4,3,2,4,2,4,1,3,1,3,1,4,3,2,3,1,2,4,1,3,2,1,4,2,3,4,1,4,2,3,2,3
+112 dan.xml,4,1,3,2,4,2,3,1,3,1,4,2,4,1,4,1,3,1,4,2,3,4,2,3,2,3,1,4,2,4,1,2,3,1,4,1,2,4,3,1,4,2,4
+113 dan.xml,0,1,4,1,4,1,3,2,4,3,1,3,2,4,1,3,2,4,1,3,2,3,2,4,1,4,2,1,3,1,4,1,4,2,3
+114 dan.xml,0,1,3,1,2,4,2,3,2,3,1,4,2,3,2,3,1,3,2,3,4,2,1,3,2,4,2,4,1,4,2,4,2,4,1,3,1,3
+115 dan.xml,0,1,3,1,4,2,3,2,4,3,2,1,3,1,2,4,2,4
+116 dan.xml,0,1,2,3,1,4,3,2,4,2,3,1,4,3,2,1,4,1,4,3,2,4,2,3,1,3
+117 dan.xml,0,3,1,3,2,4,1,4,2,4,1,3,2,4,2,1,4,2
+118 dan.xml,0,3,4,1,3,1,4,2,3,4,1,3,1,4,2,3,1,3,2,4,2,3,2,4,2,3,1,3,2,1,4,2,4
+119 dan.xml,1,3,4,1,3,2,1,3,4,2,3,2,3,2,4,1,4,2,4,3,1,3,2,4,1,3,2,1,3,4
+120 dan.xml,0,1,3,2,4,2,3,1,4,2,3,1,4,2,1,3,1,4,2,3,1,4,2,4,2,1,3,1,4,2,4,1,2,4,2,4,1,3,2
+121 dan.xml,1,1,3,1,4,1,3,2,1,4,2,1,3,1,4,2,3,1,3,2,4,2,3,2,4,2,4,2,4,3,1,3,1,3,2,4,1,2,3,1,4,2,3,1,4,2,4
+122 dan.xml,0,3,1,4,2,3,1,4,1,4,1,3,2,4,1,3,2,4,2,3,1,4,2,3,1,4,2,4,1,2,3,1,4,2,3
+123 dan.xml,0,3,1,4,2,3,1,3,2,4,1,3,1,2,4,1,3,1,3,1,4,2,4,1,3,2,4,2,3,1,3,4,2,3,4,1
+124 dan.xml,12,1,3,1,4,1,3,4,2,3,2,3,1,4,2,3,1,3,1,3,2,1,4,1,2,4,1,4,1,4,2,3,1,4,3,2,4,2,3,2,4,2,1,3,2,4,1,3
+125 dan.xml,7,3,1,3,1,4,2,1,3,2,4,2,4,1,4,1,4,3,2,4,2,3,4,2,4,1,3,1,4,3,2,4,2,3,2,4,1,4,2,4,1,4,1,4,1,4,2,1,3,2
+126 dan.xml,15,1,4,1,3,1,3,2,1,3,2,4,1,4,2,4,1,3,4,2,3,1,3,1,3,2,4,3,2,3,1,3,2,4,2,1,4,2,4,2,3,2,4,3,1,4,1,4,2,4,1,3,1,4,2
+127 dan.xml,56,1,3,2,3,1,4,2,3,2,3,2,3,1,4,1,4,2,4,1,4,2,3,1,3,2,3,2,1,4,2,3,2,4,2,4,2,4,2,3,1,3,2,3,1,3,1,4,2,4,1,4,3,2,3,1,4,1,3,2,1,4,2,3
+128 dan.xml,53,3,1,3,1,4,1,4,1,4,2,3,2,4,1,4,2,3,2,3,2,4,2,3,4,2,3,1,3,1,2,3,4,1,2,4,1,3,1,4,1,3,1,4,3,2,4,2,4,1,3,4,2
+129 dan.xml,295,3,1,4,3,2,4,2,3,1,4,1,4,3,2,4,3,1,4,1,3,1,3,2,4,1,4,2,4,2,3,4,1,3,1,3,2,3,2,3,1,4,1,4,2,4,1,3,1,3,4,2,4,1,3,2,3,2,4,1,4,1,4,2,4,2,3,2,4,1,2,3,1,3,2,4,1,4,2,4,3,2,4,2,4,2,4,1,3,1,4,1,4,2,3,4,1,3,2,3,1,4,1,3,1,3,2,3,1,4,1,3,2,4,1,3,1,3,2,3,2,3,1,4,1,3,1,4,3,2,4,2,1,3
+130 dan.xml,0,3,1,4,2,3,1,3,1,3,2,3,1,3,2,4,3,1,4,1,4,2,3,1,3,1,4,2,3,1,3,2,4,1,4,2,3,1,3,2
+131 dan.xml,0,3,1,4,1,4,1,3,1,4,1,3,2,4,3,1,4,1,3,1,4,1,4,2,3,2
+132 dan.xml,0,3,4,1,4,1,3,1,4,2,1,4,2,3,1,3,1,3,2,3,1,4,1,3,2,3,2,4,1,4,2,4,1,3,2
+133 dan.xml,0,1,3,1,3,2,4,3,1,4,2,3,1,3,1,3,2,4,1,3,4,2,3,4,2,4,2,4,2,3,1,3,1,3,2,4,1
+134 dan.xml,0,1,2,3,1,4,2,3,2,4,2,3,1,3,1,4,2,4,1,3,2,4,1,4,2,1,3,2,3,1,4,2,4,1,3,2,3,1
+135.xml,0,3,1,4,1,4,2,3,2,1,4,1,3,2,1,3,2,4,1,3,1,3,2,1
+136.xml,0,1,3,1,4,2,3,1,3,2,4,3,1,4,1,4,2,4,3,1,3,4
+137.xml,0,1,3,2,4,1,3,2,4,2,4,1,3,1,4,3,2,4,1,4,2,4,1,4,2
+138.xml,4,1,3,1,3,2,4,3,1,3,1,3,2,1,4,2,3,2,4,1,4,3,2,4,1,3
+139.xml,2,3,1,4,1,4,1,4,2,1,3,2,1,4,2,3,2,1,4,2,4,1,4,1,3,2,4,1,4,2,3
+140.xml,0,1,3,2,4,2,3,1,4,2,1,3,2,1,4,2,3,1,4
+141.xml,19,1,3,1,4,2,1,3,2,1,3,4,2,3,1,4,2,1,4,3,2,4,1,4,3,2,3,2,1,4,2,3
+142.xml,0,3,1,4,1,4,1,3,2,4,2,4,3,2,4,1,3,1,4,2,1,3,1,3,2,1
+143.xml,188,3,1,3,2,3,1,2,4,2,1,3,1,3,4,2,1,3,2,1,3,4,2,3,1,2,4,1,3,4,1,4,3,2,4
+144.xml,6,3,1,4,1,4,2,3,1,4,2,3,1,3,1,4,2,1,4,3,2,3,2,4,1,3,1,3,2,3,2,1,4,2
+145 dan.xml,2,3,1,4,1,4,2,1,4,2,3,2,3,1,3,1,4,1,3,4,1,3,2,4,1,4,2,4,3,2,4,1,4,1
+146 dan.xml,7,3,1,3,2,4,1,3,1,3,2,1,4,2,3,4,1,3,2,4,2,3,4,1,3,1,4,1,3,1,4,1,2,4,2,3
+147 dan.xml,0,3,4,1,3,1,4,1,3,1,4,2,1,3,2,4,1,4,2,3,4,1,3,2,3,2,4,1,3,1,4,2
+148 dan.xml,11,1,2,3,1,4,1,3,2,4,3,1,3,2,1,4,1,4,2,3,1,3,2,3,4,1,2,3,1,4,2,3,4,1,3,2,1,4,2,3,2,3,1,4,1
+149 dan.xml,36,1,2,3,1,3,1,4,1,4,2,1,4,2,4,1,3,4,1,3,1,4,2,3,1,3,2,4,2,4,2,3,2,4,1
+150 dan.xml,25,1,2,3,1,4,1,2,3,2,4,1,4,2,3,1,3,1,4,1,4,1,2,3,2,3,1,4,2,3,2,1,3,2,4,1,2,4,2,3,1,2,4
+151 dan.xml,0,1,3,2,4,2,1,3,1,3,2,1,4,2,3,2,4,2,3,1,3,2,3,1,4,2,4,1
+152 dan.xml,0,3,1,4,1,4,2,1,4,2,3,1,3,2,3,4,2,3,1,3,1,4,1,4,2,1,3,2,4,1,3,2,4
+153 dan.xml,11,3,1,2,4,1,4,1,3,2,4,2,3,1,4,1,4,1,4,3,2,4,3,2,3,1,3,1,3,2,4,2,3,1,4,2,3,2,4,1,3,1,3,1,4,2,4,1,4,2,4,1,3,2
+154 dan.xml,1,1,3,1,3,2,4,1,4,1,4,2,3,2,3,1,3,2,4,2,3,1,4,2,1,3,2,4,3,1,4,1,3,2,4,2,3,4
+155 dan.xml,11,3,1,3,2,1,4,1,3,2,4,1,4,2,4,1,3,2,4,3,1,4,2,1,3,2,3,2,4,3,1,4,1,3,2,3,2,1,3,2,4,1
+156 dan.xml,0,3,1,4,1,4,2,3,2,3,1,4,1,2,3,2,4,2,1,3,2,3,1,4,3,2,4,2,3
+157 dan.xml,13,3,1,3,1,3,4,1,3,2,4,1,2,3,2,3,2,4,2,4,2,4,1,3,1,3,2,4,3,1,4,1,3,2,4,2,3,1,4,2,3
+158 dan.xml,0,1,3,1,4,2,3,2,4,2,3,1,3,2,4,1,4,2,3,2,4,2,4,3,1,3,2,4,2,3,1,4,2,3
+159 dan.xml,21,3,1,2,4,1,3,2,1,3,1,4,2,1,3,2,4,2,3,1,4,2,3,2,4,1,4,2,4,1,3,1,4,1,3,2,1,3,2,3,2,3,4,1,4,2
+160 dan.xml,0,3,1,2,4,1,3,1,3,2,4,1,3,4,2,3,2,4,1,3,2
+161 dan.xml,0,1,3,2,3,1,4,2,4,2,1,4,2,3,1,4,1,3
+162 dan.xml,0,1,2,3,1,4,2,1,4,1,4,1,3,2,3,2,1,4,2,4,1,3,4,2,3,1,3,1
+163 dan.xml,0,3,1,2,4,1,3,1,3,2,1,4,2,3,4,1,3,2,3,1,4,2,4,2,3,2,4,1,4,2
+164 dan.xml,0,3,1,3,1,4,2,3,1,4,2,1,3,1,3,1,3,2,1,4,2,3,1,4
+165 dan.xml,0,1,3,1,3,2,4,2,4,3,1,3,2,4,3,1,3,1,3,2,4,1,3,1,3,2,4,3,1,4,2,3,1,3,2,3
+166 dan.xml,1,3,4,1,3,1,4,1,3,2,3,1,4,2,3,1,3,1,4,2,4,1,3,2,3,1,4,2,1,3,2,4,1,3,2,4,1,4,2,3,2,3
+167 dan.xml,43,1,2,3,1,3,1,4,1,4,2,4,3,1,3,2,3,1,4,2,4,2,3,2,4,2,4,3,2,4,1,4,2,3,1,4,3,2,4,1,4,1,3,1,4,2,3,1,4
+168 dan.xml,0,1,3,2,3,4,2,3,1,3,2,4,1,3,2,4,3,1,4,2,4
+169 dan.xml,0,1,2,3,1,3,2,4,2,1,4,2,4,1,3,1,2,4
+170 dan.xml,4,3,1,4,2,3,2,4,1,4,2,3,4,1,3,1,4,2,3,4,1,4,2,4,2,3,4,2,3,2,3,2,1,4,2,3,1,4,1,3,1,3,2,3,1,3,1,4,2,1,3,1,4,2,3,2,4,2

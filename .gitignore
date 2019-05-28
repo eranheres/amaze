@@ -2,3 +2,6 @@
 .idea/
 amaze/__pycache__/
 src/amaze/__pycache__/
+data/sandbox/
+.DS_Store
+*.pyc
