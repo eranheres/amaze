@@ -1,5 +1,5 @@
 ### Amaze Challange solution
-This project aims to provide the shortest path solution within 5 minutes for the Amaze! game.
+This project aims to provide the shortest path solution within 5 minutes for level to the TabTale's Amaze! game.
 
 To execute the solution run the following:
 
