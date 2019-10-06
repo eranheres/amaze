@@ -1,16 +1,16 @@
-### Amaze Challange solution
-This project aims to provide the shortest path solution within 5 minutes for the Amaze! game.
+### Amaze! Challange solution
+This project aims to provide the shortest path solution within 5 minutes for level to the TabTale's Amaze! game.
 
-To execute the solution run the following:
+To execute the solution run the following (Make sure to checkout this branch):
 
 ````
 cd src
 python3 run_combined.py --path ../data/all 
 ````
 
-Presolved solution can be found at solutions/final.txt
+Solved solution can be found at solutions/solution.txt
 
-To compare solutions and validate results use the following:
+To compare solutions and validate the results use the following:
 
 ````
 cd data/all
